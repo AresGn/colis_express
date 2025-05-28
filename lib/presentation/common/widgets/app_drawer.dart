@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:benin_express/presentation/features/parcels/suivi_screen.dart';
+import 'package:benin_express/presentation/features/payment/paiement_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -42,6 +44,26 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.person),
             title: const Text('Profil'),
             onTap: () {},
+          ),
+          ListTile(
+            leading: const Icon(Icons.archive_outlined),
+            title: const Text('Mes livraisons'),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const SuiviScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.payment_outlined),
+            title: const Text('Paiement'),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const PaiementScreen()),
+              );
+            },
           ),
           ListTile(
             leading: const Icon(Icons.logout),

@@ -1,0 +1,8 @@
+node_modules/ 
+.dart_tool/ 
+.flutter-plugins 
+.flutter-plugins-dependencies 
+build/ 
+.env 
+google-services.json 
+GoogleService-Info.plist 

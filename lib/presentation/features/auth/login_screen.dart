@@ -3,6 +3,9 @@ import 'package:benin_express/config/theme/app_colors.dart';
 import 'package:benin_express/config/theme/app_typography.dart';
 import 'package:benin_express/presentation/common/widgets/custom_button.dart';
 import 'package:benin_express/presentation/common/widgets/custom_text_field.dart';
+import 'package:benin_express/presentation/features/home/home_screen.dart';
+
+enum UserType { expediteur, livreur }
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
   bool _obscurePassword = true;
+  UserType _selectedUserType = UserType.expediteur;
 
   @override
   void dispose() {
@@ -37,17 +41,26 @@ class _LoginScreenState extends State<LoginScreen> {
         _isLoading = true;
       });
 
-      // Simulate login
+      // Simulate login based on _selectedUserType
+      print(
+        'LoginScreen: User type selected: $_selectedUserType',
+      ); // Debug print
+
       Future.delayed(const Duration(seconds: 2), () {
         if (mounted) {
           setState(() {
             _isLoading = false;
           });
 
-          // Navigate to home screen
-          // Navigator.of(context).pushReplacement(
-          //   MaterialPageRoute(builder: (context) => const HomeScreen()),
-          // );
+          // Navigate to home screen with UserType
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder:
+                  (context) => HomeScreen(
+                    userType: _selectedUserType,
+                  ), // Pass selected user type
+            ),
+          );
         }
       });
     }
@@ -80,6 +93,53 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const SizedBox(height: 16),
+                  // User type toggle
+                  ToggleButtons(
+                    borderRadius: BorderRadius.circular(8),
+                    selectedBorderColor: AppColors.primaryGreen,
+                    selectedColor: Colors.white,
+                    fillColor: AppColors.primaryGreen,
+                    color: AppColors.textSecondary,
+                    constraints: BoxConstraints.expand(
+                      width: (MediaQuery.of(context).size.width - 48 - 8) / 2,
+                      height: 40,
+                    ),
+                    onPressed: (int index) {
+                      setState(() {
+                        if (index == 0) {
+                          _selectedUserType = UserType.expediteur;
+                        } else {
+                          _selectedUserType = UserType.livreur;
+                        }
+                      });
+                    },
+                    isSelected: [
+                      _selectedUserType == UserType.expediteur,
+                      _selectedUserType == UserType.livreur,
+                    ],
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          'Expéditeur',
+                          style: AppTypography.body1.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Text(
+                          'Livreur',
+                          style: AppTypography.body1.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 24),
                   const SizedBox(height: 24),
 
                   // Logo
@@ -191,7 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   // Login button
                   CustomButton(
-                    text: 'Se connecter',
+                    text: 'Connexion',
                     onPressed: _login,
                     isLoading: _isLoading,
                   ),

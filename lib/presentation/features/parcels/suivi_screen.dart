@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:benin_express/presentation/features/parcels/suivi_carte_screen.dart'; // Import the new map screen
 
-class SuiviScreen extends StatelessWidget {
+// Convert SuiviScreen to StatefulWidget
+class SuiviScreen extends StatefulWidget {
   const SuiviScreen({super.key});
+
+  @override
+  State<SuiviScreen> createState() => _SuiviScreenState();
+}
+
+class _SuiviScreenState extends State<SuiviScreen> {
+  // Add state variable to track if collected
+  bool _isCollected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -85,9 +95,10 @@ class SuiviScreen extends StatelessWidget {
                       time: 'Aujourd\'hui 14:30',
                       isLast: false,
                     ),
+                    // Use state to determine icon and color for 'Collectée par transporteur'
                     _buildTimelineStep(
-                      icon: Icons.check_circle,
-                      iconColor: Colors.green,
+                      icon: _isCollected ? Icons.check_circle : Icons.archive,
+                      iconColor: _isCollected ? Colors.green : Colors.grey,
                       title: 'Collectée par transporteur',
                       description: null,
                       time: 'Aujourd\'hui 15:45',
@@ -141,14 +152,27 @@ class SuiviScreen extends StatelessWidget {
                     const SizedBox(width: 12),
                     Expanded(
                       child: OutlinedButton.icon(
-                        onPressed: () {
-                          /* TODO: Implement share action */
+                        onPressed: () async {
+                          // Navigate to SuiviCarteScreen and wait for result
+                          final result = await Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const SuiviCarteScreen(),
+                            ),
+                          );
+                          // If result is true, update state
+                          if (result == true) {
+                            setState(() {
+                              _isCollected = true;
+                            });
+                          }
                         },
                         icon: const Icon(
-                          Icons.share,
+                          Icons.map, // Changed icon to map
                           size: 18,
                         ), // Icône partage
-                        label: const Text('Partager le suivi'),
+                        label: const Text(
+                          'Voir la position du transporteur',
+                        ), // Changed button text
                         style: OutlinedButton.styleFrom(
                           foregroundColor: const Color(
                             0xFF374151,

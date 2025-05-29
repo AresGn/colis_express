@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:benin_express/presentation/features/delivery/widgets/success_animation.dart';
+import 'package:benin_express/presentation/features/delivery/widgets/info_card.dart';
+import 'package:benin_express/presentation/features/delivery/widgets/detail_row.dart';
+import 'package:benin_express/presentation/features/delivery/widgets/action_buttons.dart';
 
+/// u00c9cran de confirmation de livraison ru00e9ussie
 class LivraisonConfirmeeScreen extends StatelessWidget {
   const LivraisonConfirmeeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5), // Fond général
+      backgroundColor: const Color(0xFFF5F5F5), // Fond gu00e9nu00e9ral
       appBar: AppBar(
-        title: const Text('Livraison confirmée'),
-        backgroundColor: Colors.white, // En-tête fixe blanc
+        title: const Text('Livraison confirmu00e9e'),
+        backgroundColor: Colors.white, // En-tu00eate fixe blanc
         elevation: 1,
         centerTitle: true,
         foregroundColor: const Color(0xFF1F2937), // Texte sombre
@@ -18,61 +23,8 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Espace pour l'AppBar si extendBodyBehindAppBar n'est pas utilisé
-            // SizedBox(height: AppBar().preferredSize.height),
-
-            // Animation de succès (simplifiée pour l'instant)
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 24),
-              child: Center(
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    // Anneaux animés (simulés avec des containers)
-                    Container(
-                      width: 160,
-                      height: 160,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: const Color(0xFF10B981).withOpacity(0.2),
-                          width: 8,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 140,
-                      height: 140,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: const Color(0xFF10B981).withOpacity(0.3),
-                          width: 8,
-                        ),
-                      ),
-                    ),
-                    // Cercle vert dégradé et icône check
-                    Container(
-                      width: 120,
-                      height: 120,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        gradient: LinearGradient(
-                          colors: [Color(0xFF008751), Color(0xFF22C55E)],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                      ),
-                      child: const Icon(
-                        Icons.check,
-                        color: Colors.white,
-                        size: 60, // Taille ajustée
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Animation de succu00e8s
+            const SuccessAnimation(),
 
             // Message principal
             Padding(
@@ -84,7 +36,7 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Livraison réussie !',
+                    'Livraison ru00e9ussie !',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -94,7 +46,7 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Le colis #CEB-2415 à destination de Abomey-Calavi a été livré. Merci pour votre confiance avec Colis Express Bénin.',
+                    'Le colis #CEB-2415 u00e0 destination de Abomey-Calavi a u00e9tu00e9 livru00e9. Merci pour votre confiance avec Colis Express Bu00e9nin.',
                     style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                     textAlign: TextAlign.center,
                   ),
@@ -104,268 +56,178 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // Détails de livraison (Carte blanche)
-            _buildInfoCard(
-              title: 'Détails de livraison',
-              icon: Icons.archive,
-              iconColor: const Color(0xFF008751),
+            // Du00e9tails de la livraison
+            InfoCard(
+              title: 'Du00e9tails de la livraison',
+              icon: Icons.local_shipping,
+              iconColor: const Color(0xFF10B981),
               content: GridView.count(
+                crossAxisCount: 2,
+                childAspectRatio: 2.5,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                childAspectRatio:
-                    2.0, // Further decreased aspect ratio to give more vertical space
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8,
-                children: [
-                  _buildDetailRow('Numéro de colis', '#CEB-2415'),
-                  _buildDetailRow('Destination', 'Abomey-Calavi'),
-                  _buildDetailRow('Date de livraison', 'Aujourd\'hui, 15:42'),
-                  _buildDetailRow('Livreur', 'Kofi Mensah'),
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                children: const [
+                  DetailRow(label: 'Nu00b0 de suivi', value: 'CEB-2415'),
+                  DetailRow(label: 'Date', value: '29 Mai, 2025'),
+                  DetailRow(label: 'Heure', value: '14:35'),
+                  DetailRow(label: 'Mode', value: 'Moto'),
+                  DetailRow(label: 'Colis', value: 'Electronique'),
+                  DetailRow(label: 'Poids', value: '2.5 kg'),
                 ],
               ),
             ),
 
-            // Total à payer (ajouté ici pour être visible sur l'écran de confirmation)
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 8.0,
-              ),
-              child: Align(
-                // Wrap with Align to control alignment if needed
-                alignment: Alignment.centerRight, // Adjust alignment as needed
-                child: Text(
-                  'Total: 1,500 FCFA',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: const Color(0xFF008751),
-                  ),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 16),
-
-            // Infos destinataire
-            _buildInfoCard(
-              title: 'Reçu par:',
-              icon: Icons.person,
-              iconColor: const Color(0xFF008751),
-              content: Row(
+            // Adresses
+            InfoCard(
+              title: 'Adresses',
+              icon: Icons.location_on,
+              iconColor: const Color(0xFF3B82F6),
+              content: Column(
                 children: [
-                  Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: const Color(0xFF008751),
-                    ),
-                    child: const Icon(
-                      Icons.person,
-                      color: Colors.white,
-                      size: 30,
-                    ),
+                  // Du00e9part
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.circle,
+                        size: 16,
+                        color: Color(0xFF10B981),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Point de du00e9part',
+                              style: TextStyle(
+                                color: Color(0xFF6B7280),
+                                fontSize: 14,
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              '123 Rue du Commerce, Akpakpa, Cotonou',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Marie Adjovi',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Color(0xFF1F2937),
-                          ),
+                  const SizedBox(height: 2),
+                  // Ligne verticale entre les points
+                  Row(
+                    children: [
+                      const SizedBox(width: 8),
+                      Container(
+                        height: 16,
+                        width: 1,
+                        color: Colors.grey[300],
+                      ),
+                      const SizedBox(width: 8),
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  // Arrivu00e9e
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Icon(
+                        Icons.location_on,
+                        size: 16,
+                        color: Color(0xFFEF4444),
+                      ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Destination',
+                              style: TextStyle(
+                                color: Color(0xFF6B7280),
+                                fontSize: 14,
+                              ),
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              '456 Avenue des Palmiers, Calavi, Cotonou',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(height: 4),
-                        Text(
-                          'Signature électronique confirmée',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Color(0xFF6B7280),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 24),
+            // Paiement
+            InfoCard(
+              title: 'Paiement',
+              icon: Icons.payment,
+              iconColor: const Color(0xFFF59E0B),
+              content: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text('Mu00e9thode'),
+                      Text(
+                        'Carte Visa ****4528',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text('Montant'),
+                      Text(
+                        '15 000 XOF',
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
 
             // Boutons d'action
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: [
-                  // Bouton Évaluer le service
-                  OutlinedButton(
-                    onPressed: () {
-                      // TODO: Implémenter l'action Évaluer
-                    },
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      side: const BorderSide(color: Color(0xFF008751)),
-                      foregroundColor: const Color(0xFF008751),
-                      textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.star_border),
-                        SizedBox(width: 8),
-                        Text('Évaluer le service'),
-                      ],
-                    ),
+            ActionButtons(
+              onHomePressed: () {
+                // Retour u00e0 l'u00e9cran d'accueil
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  '/',
+                  (route) => false,
+                );
+              },
+              onDownloadPressed: () {
+                // TODO: Implu00e9menter l'action Tu00e9lu00e9charger reu00e7u
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Tu00e9lu00e9chargement du reu00e7u...'),
+                    duration: Duration(seconds: 2),
                   ),
-                  const SizedBox(height: 12),
-
-                  // Bouton Retour à l'accueil
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).popUntil(
-                        (route) => route.isFirst,
-                      ); // Navigate back to the first screen (accueil)
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                      elevation: 2,
-                      backgroundColor: const Color(
-                        0xFF008751,
-                      ), // Green background
-                      foregroundColor: Colors.white, // White text
-                      shadowColor: const Color(
-                        0xFF008751,
-                      ).withOpacity(0.4), // Green shadow
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.home),
-                        SizedBox(width: 8),
-                        Text('Retour à l\'accueil'),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-
-                  // Bouton Télécharger le reçu
-                  OutlinedButton(
-                    onPressed: () {
-                      // TODO: Implémenter l'action Télécharger reçu
-                    },
-                    style: OutlinedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      side: const BorderSide(color: Color(0xFFE5E7EB)),
-                      foregroundColor: const Color(0xFF6B7280), // Grey text
-                      backgroundColor: const Color(0xFFF8FAFC),
-                      textStyle: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.download),
-                        SizedBox(width: 8),
-                        Text('Télécharger le reçu'),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                );
+              },
             ),
 
             const SizedBox(height: 24),
           ],
         ),
-      ),
-    );
-  }
-
-  // Helper widget to build info cards
-  Widget _buildInfoCard({
-    required String title,
-    required IconData icon,
-    required Color iconColor,
-    required Widget content,
-  }) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      padding: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 8,
-            offset: Offset(0, 2), // Shadow at the bottom
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(icon, color: iconColor, size: 24),
-              const SizedBox(width: 8),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                  color: Color(0xFF1F2937), // Dark color
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          content,
-        ],
-      ),
-    );
-  }
-
-  // Helper widget to build detail rows in the GridView
-  static Widget _buildDetailRow(String label, String value) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF6B7280), // Grey color
-            ),
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 4),
-          Text(
-            value,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Color(0xFF1F2937), // Dark color
-            ),
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
       ),
     );
   }

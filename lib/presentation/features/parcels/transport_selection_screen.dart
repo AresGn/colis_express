@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/common/widgets/transport/transport_header.dart';
 import 'package:benin_express/presentation/common/widgets/transport/transport_trip_info.dart';
 import 'package:benin_express/presentation/common/widgets/transport/transport_list.dart';
-import 'package:benin_express/presentation/features/parcels/validation_screen.dart';
-import 'package:benin_express/presentation/features/auth/login_screen.dart';
+import 'package:benin_express/presentation/features/parcels/screens/validation_screen.dart';
+import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart';
+import 'package:benin_express/domain/models/parcel.dart';
+import 'package:benin_express/domain/models/address.dart';
+import 'package:benin_express/domain/models/transport_type.dart';
+import 'package:benin_express/domain/models/parcel_status.dart';
+import 'package:benin_express/domain/models/contact.dart';
 
 class TransportSelectionScreen extends StatelessWidget {
   final UserType userType;
@@ -22,10 +27,45 @@ class TransportSelectionScreen extends StatelessWidget {
             Expanded(
               child: TransportList(
                 onTransporteurSelected: () {
+                  // TODO: Remplacer par les données réelles passées depuis l'écran précédent
+                  final parcel = Parcel(
+                    id: 'TEMP-ID',
+                    trackingNumber: 'BEN-123456',
+                    description: 'Colis temporaire',
+                    status: ParcelStatus.pending,
+                    createdAt: DateTime.now(),
+                    weight: 2.5,
+                    dimensions: '30x20x15 cm',
+                    pickupAddress: Address(
+                      street: '123 Rue Exemple',
+                      city: 'Cotonou',
+                      postalCode: '00000',
+                      country: 'Bénin',
+                      state: 'Littoral'
+                    ),
+                    deliveryAddress: Address(
+                      street: '456 Avenue Test',
+                      city: 'Porto-Novo',
+                      postalCode: '00000',
+                      country: 'Bénin',
+                      state: 'Ouémé'
+                    ),
+                    sender: Contact(
+                      name: 'Jean Dupont',
+                      phoneNumber: '+22991234567',
+                      email: 'jean@example.com',
+                    ),
+                    recipient: Contact(
+                      name: 'Marie Kokou',
+                      phoneNumber: '+22997654321',
+                    ),
+                    transportType: TransportType.express,
+                    price: 5000,
+                  );
+                  
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder:
-                          (context) => ValidationScreen(userType: userType),
+                      builder: (context) => ValidationScreen(parcel: parcel),
                     ),
                   );
                 },

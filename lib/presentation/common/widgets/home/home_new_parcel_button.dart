@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/features/parcels/new_parcel_screen.dart';
-import 'package:benin_express/presentation/features/auth/login_screen.dart'; // Import UserType enum
+import 'package:benin_express/presentation/features/parcels/screens/new_parcel_screen.dart';
+import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart';
 
 class HomeNewParcelButton extends StatelessWidget {
   final UserType userType;

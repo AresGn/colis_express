@@ -5,7 +5,7 @@ import 'package:benin_express/presentation/common/widgets/home/home_secondary_ac
 import 'package:benin_express/presentation/common/widgets/home/home_recent_parcels.dart';
 import 'package:benin_express/presentation/common/widgets/home/home_footer.dart';
 import 'package:benin_express/presentation/common/widgets/app_drawer.dart';
-import 'package:benin_express/presentation/features/auth/login_screen.dart'; // Import UserType enum
+import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart'; // Import UserType enum
 
 class HomeScreen extends StatefulWidget {
   final UserType userType;

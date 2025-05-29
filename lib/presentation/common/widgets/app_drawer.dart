@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/features/parcels/suivi_screen.dart';
-import 'package:benin_express/presentation/features/payment/paiement_screen.dart';
+import 'package:benin_express/presentation/features/tracking/screens/tracking_screen.dart';
+import 'package:benin_express/presentation/features/payment/screens/payment_screen.dart';
+import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart' show UserType;
+
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -51,7 +53,7 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const SuiviScreen()),
+                MaterialPageRoute(builder: (context) => const TrackingScreen()),
               );
             },
           ),
@@ -61,7 +63,11 @@ class AppDrawer extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const PaiementScreen()),
+                MaterialPageRoute(builder: (context) => PaymentScreen(
+                amount: 0.0, // Valeur par défaut ou à récupérer dynamiquement
+                orderId: 'preview', // ID temporaire pour l'aperçu
+                userType: UserType.expediteur, // Type d'utilisateur par défaut
+              )),
               );
             },
           ),

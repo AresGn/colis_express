@@ -83,7 +83,6 @@ class _ParcelItem extends StatelessWidget {
     required this.status,
     required this.statusColor,
     this.statusIcon,
-    super.key,
   });
 
   @override

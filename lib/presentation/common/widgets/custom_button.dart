@@ -1,6 +1,6 @@
+import 'package:benin_express/presentation/core/theme/app_colors.dart';
+import 'package:benin_express/presentation/core/theme/app_typography.dart';
 import 'package:flutter/material.dart';
-import 'package:benin_express/config/theme/app_colors.dart';
-import 'package:benin_express/config/theme/app_typography.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;

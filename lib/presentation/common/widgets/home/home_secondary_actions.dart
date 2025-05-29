@@ -43,7 +43,6 @@ class _ActionButton extends StatelessWidget {
     required this.title,
     required this.color,
     this.onTap,
-    super.key,
   });
 
   @override

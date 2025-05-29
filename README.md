@@ -219,3 +219,23 @@ Voici une liste exhaustive des écrans potentiels pour votre application de tran
 ---
 
 Cette structure couvre l'ensemble des cas d'utilisation et s'aligne avec les spécifications techniques (Clean Architecture, Provider, Supabase). Pour chaque écran, prévoyez des états vides/erreur (ex: liste de chauffeurs vide) et des animations de transition fluides.
+
+
+
+Oui, vous pouvez supprimer les anciens écrans et fichiers que je n'ai pas touchés ou remplacés. Voici comment procéder:
+
+Anciens fichiers à supprimer:
+Tous les fichiers dans lib/presentation/common/widgets/splash/ (puisqu'ils ont été déplacés vers lib/presentation/features/onboarding/widgets/)
+L'ancien fichier lib/presentation/features/onboarding/splash_screen.dart (remplacé par lib/presentation/features/onboarding/screens/splash_screen.dart)
+L'ancien fichier lib/presentation/features/onboarding/welcome_screen.dart (remplacé par lib/presentation/features/onboarding/screens/welcome_screen.dart)
+Tous les anciens fichiers dans lib/presentation/features/parcels/ qui ne sont pas dans des sous-dossiers (puisqu'ils ont été réorganisés dans des sous-dossiers screens et widgets)
+Les anciens fichiers de thème dans lib/config/ (puisqu'ils ont été déplacés vers lib/presentation/core/theme/)
+Gardez les fichiers suivants:
+Tous les nouveaux fichiers créés dans la structure réorganisée
+Tout fichier contenant une logique importante que nous n'avons pas encore migrée
+Pour être prudent, je vous recommande:
+
+Ne supprimez pas tout d'un coup. Vérifiez d'abord que l'application fonctionne avec la nouvelle structure.
+Sauvegardez les anciens fichiers avant de les supprimer (par exemple, déplacez-les temporairement dans un dossier "old" à la racine du projet).
+Supprimez un groupe de fichiers à la fois et testez l'application entre chaque suppression.
+Cela garantira que vous ne perdrez pas de code important qui n'aurait pas été correctement migré dans la nouvelle structure.

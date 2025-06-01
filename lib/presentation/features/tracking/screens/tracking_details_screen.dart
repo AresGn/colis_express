@@ -11,7 +11,7 @@ import 'package:benin_express/presentation/features/tracking/widgets/contacts_se
 import 'package:benin_express/presentation/features/tracking/widgets/tracking_timeline.dart';
 import 'package:benin_express/presentation/features/tracking/widgets/tracking_action_buttons.dart';
 
-/// u00c9cran du00e9taillu00e9 du suivi d'un colis
+/// u00c9cran dé9taillé9 du suivi d'un colis
 class TrackingDetailsScreen extends StatefulWidget {
   final String trackingNumber;
 
@@ -22,7 +22,7 @@ class TrackingDetailsScreen extends StatefulWidget {
 }
 
 class _TrackingDetailsScreenState extends State<TrackingDetailsScreen> {
-  // Variables d'u00e9tat
+  // Variables d'é9tat
   bool _isCollected = false;
   bool _isLoading = true;
   late Parcel parcel;
@@ -30,11 +30,11 @@ class _TrackingDetailsScreenState extends State<TrackingDetailsScreen> {
   @override
   void initState() {
     super.initState();
-    // Initialiser les donnu00e9es du colis
+    // Initialiser les donné9es du colis
     parcel = Parcel(
       id: widget.trackingNumber,
       trackingNumber: widget.trackingNumber,
-      description: "Colis u00e9lectronique",
+      description: "Colis é9lectronique",
       status: ParcelStatus.inTransit,
       createdAt: DateTime.now().subtract(const Duration(days: 2)),
       updatedAt: DateTime.now(),
@@ -57,18 +57,18 @@ class _TrackingDetailsScreenState extends State<TrackingDetailsScreen> {
         city: "Cotonou",
         state: "Littoral",
         district: "Akpakpa",
-        country: "Bu00e9nin",
+        country: "Bé9nin",
       ),
       deliveryAddress: Address(
         street: "456 Avenue des Palmiers",
         city: "Cotonou",
         state: "Littoral",
         district: "Calavi",
-        country: "Bu00e9nin",
+        country: "Bé9nin",
       ),
     );
 
-    // Simuler le chargement des donnu00e9es
+    // Simuler le chargement des donné9es
     Future.delayed(const Duration(milliseconds: 500), () {
       if (mounted) {
         setState(() {
@@ -83,7 +83,7 @@ class _TrackingDetailsScreenState extends State<TrackingDetailsScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: const Text('Du00e9tails du suivi'),
+        title: const Text('Dé9tails du suivi'),
         backgroundColor: Colors.white,
         foregroundColor: AppColors.textPrimary,
         elevation: 0.5,
@@ -112,12 +112,12 @@ class _TrackingDetailsScreenState extends State<TrackingDetailsScreen> {
     );
   }
 
-  // Contenu principal de l'u00e9cran
+  // Contenu principal de l'é9cran
   Widget _buildContent() {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // Banniu00e8re de statut
+          // Bannié8re de statut
           StatusBanner(
             emoji: 'ud83dude9a',
             message: 'Votre colis est en transit',
@@ -138,10 +138,10 @@ class _TrackingDetailsScreenState extends State<TrackingDetailsScreen> {
               setState(() {
                 _isCollected = true;
               });
-              // TODO: Mettre u00e0 jour le statut sur le serveur
+              // TODO: Mettre é0 jour le statut sur le serveur
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Ru00e9ception du colis confirmu00e9e avec succu00e8s!'),
+                  content: Text('Ré9ception du colis confirmé9e avec succé8s!'),
                   backgroundColor: AppColors.success,
                 ),
               );
@@ -158,7 +158,9 @@ class _TrackingDetailsScreenState extends State<TrackingDetailsScreen> {
     // Using exhaustive switch pattern with return statement
     return switch (status) {
       ParcelStatus.pending || ParcelStatus.processing => DeliveryStatus.pending,
-      ParcelStatus.pickedUp || ParcelStatus.inTransit || ParcelStatus.outForDelivery => DeliveryStatus.inTransit,
+      ParcelStatus.pickedUp ||
+      ParcelStatus.inTransit ||
+      ParcelStatus.outForDelivery => DeliveryStatus.inTransit,
       ParcelStatus.delivered => DeliveryStatus.delivered,
       ParcelStatus.cancelled => DeliveryStatus.cancelled,
     };
@@ -174,7 +176,7 @@ class _TrackingDetailsScreenState extends State<TrackingDetailsScreen> {
       ParcelStatus.inTransit => 'En transit',
       ParcelStatus.outForDelivery => 'En cours de livraison',
       ParcelStatus.delivered => 'Livré',
-      ParcelStatus.cancelled => 'Annulé'
+      ParcelStatus.cancelled => 'Annulé',
     };
   }
 
@@ -183,12 +185,15 @@ class _TrackingDetailsScreenState extends State<TrackingDetailsScreen> {
     // Using exhaustive switch expression
     return switch (status) {
       ParcelStatus.pending => 'Votre commande est en attente de traitement.',
-      ParcelStatus.processing => 'Votre colis est en cours de préparation pour l\'expédition.',
-      ParcelStatus.pickedUp => 'Votre colis a été collecté par le transporteur.',
+      ParcelStatus.processing =>
+        'Votre colis est en cours de préparation pour l\'expédition.',
+      ParcelStatus.pickedUp =>
+        'Votre colis a été collecté par le transporteur.',
       ParcelStatus.inTransit => 'Votre colis est en route vers sa destination.',
-      ParcelStatus.outForDelivery => 'Votre colis est avec le livreur et sera bientôt livré.',
+      ParcelStatus.outForDelivery =>
+        'Votre colis est avec le livreur et sera bientôt livré.',
       ParcelStatus.delivered => 'Votre colis a été livré avec succès.',
-      ParcelStatus.cancelled => 'Votre commande a été annulée.'
+      ParcelStatus.cancelled => 'Votre commande a été annulée.',
     };
   }
 }

@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 enum TransportType {
   express, // Livraison express (1-2h)
   standard, // Livraison standard (3-5h)
-  economic, // Livraison u00e9conomique (6-24h)
+  economic, // Livraison é9conomique (6-24h)
   moto, // Transport par moto
   car, // Transport par voiture
   truck, // Transport par camion
 }
 
-/// Extension pour ajouter des fonctionnalitu00e9s aux types de transport
+/// Extension pour ajouter des fonctionnalité9s aux types de transport
 extension TransportTypeExtension on TransportType {
   String get displayName {
     switch (this) {

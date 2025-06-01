@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/widgets/screen_header.dart';
+import 'package:benin_express/presentation/core/theme/app_typography.dart';
 import 'package:benin_express/presentation/features/parcels/screens/validation_screen.dart';
 import 'package:benin_express/domain/models/parcel.dart';
 import 'package:benin_express/domain/models/parcel_status.dart';
 import 'package:benin_express/domain/models/address.dart';
 import 'package:benin_express/domain/models/contact.dart';
 import 'package:benin_express/domain/models/transport_type.dart';
-import 'package:benin_express/presentation/features/parcels/models/transport_option.dart';
-import 'package:benin_express/presentation/features/parcels/widgets/transport_options_list.dart';
-import 'package:benin_express/presentation/features/parcels/widgets/continue_button_footer.dart';
-import 'package:benin_express/presentation/features/parcels/utils/transport_mapper.dart';
+import 'package:benin_express/presentation/features/parcels/models/transporter.dart';
+import 'package:benin_express/presentation/features/parcels/widgets/transport_header_info.dart';
+import 'package:benin_express/presentation/features/parcels/widgets/new_transport_list.dart';
 
-/// u00c9cran de su00e9lection du mode de transport pour un colis
+/// Écran de sélection du mode de transport pour un colis
 class TransportSelectionScreen extends StatefulWidget {
-  // On pourrait ajouter des paramu00e8tres pour recevoir les donnu00e9es du formulaire pru00e9cu00e9dent
+  // On pourrait ajouter des paramètres pour recevoir les données du formulaire précédent
   const TransportSelectionScreen({super.key});
 
   @override
@@ -23,10 +22,10 @@ class TransportSelectionScreen extends StatefulWidget {
 }
 
 class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
-  int _selectedTransportIndex = -1;
+  Transporter? _selectedTransporter;
 
-  // Objet Parcel fictif pour la du00e9monstration
-  // TODO: Remplacer par les donnu00e9es ru00e9elles passu00e9es depuis l'u00e9cran pru00e9cu00e9dent
+  // Objet Parcel fictif pour la démonstration
+  // TODO: Remplacer par les données réelles passées depuis l'écran précédent
   final Parcel _dummyParcel = Parcel(
     id: 'dummy_id',
     trackingNumber: 'DUMMY123456789',
@@ -35,16 +34,16 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
     createdAt: DateTime.now(),
     pickupAddress: Address(
       street: 'Dummy Pickup St',
-      city: 'Dummy City',
-      state: 'Dummy State',
-      country: 'Dummy Country',
+      city: 'Cotonou',
+      state: 'Littoral',
+      country: 'Bénin',
       district: '',
     ),
     deliveryAddress: Address(
       street: 'Dummy Delivery Ave',
-      city: 'Dummy City',
-      state: 'Dummy State',
-      country: 'Dummy Country',
+      city: 'Parakou',
+      state: 'Borgou',
+      country: 'Bénin',
       district: '',
     ),
     sender: Contact(name: 'Dummy Sender', phoneNumber: '1234567890', email: ''),
@@ -53,56 +52,100 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
       phoneNumber: '0987654321',
       email: '',
     ),
-    price: 0.0, // Le prix sera mis u00e0 jour selon l'option de transport
-    transportType: TransportType.standard, // Placeholder, sera mis u00e0 jour
+    price: 0.0, // Le prix sera mis à jour selon l'option de transport
+    transportType: TransportType.standard, // Placeholder, sera mis à jour
   );
 
-  // Liste des options de transport (statique pour l'instant)
-  final List<TransportOption> _transportOptions = [
-    TransportOption(
-      name: 'Transport Express',
+  // Liste des transporteurs disponibles (conforme au design)
+  final List<Transporter> _transporters = [
+    Transporter(
+      id: 'transexpress',
+      name: 'TransExpress',
+      logo: '🚛',
+      isRecommended: true,
+      rating: 4.8,
+      reviewCount: 127,
       price: 2500,
-      deliveryTime: '1-2 heures',
-      icon: Icons.electric_moped,
-      iconColor: AppColors.primaryBlue,
+      estimatedTime: '2h',
+      vehicleType: 'Camion',
+      vehicleIcon: '🚛',
+      primaryColor: AppColors.primaryGreen,
+      secondaryColor: AppColors.primaryGreen.withValues(alpha: 0.1),
     ),
-    TransportOption(
-      name: 'Transport Standard',
-      price: 1500,
-      deliveryTime: '3-5 heures',
-      icon: Icons.delivery_dining,
-      iconColor: AppColors.primaryGreen,
+    Transporter(
+      id: 'rapidcolis',
+      name: 'RapidColis',
+      logo: '🚐',
+      isRecommended: false,
+      rating: 4.6,
+      reviewCount: 89,
+      price: 2200,
+      estimatedTime: '3h',
+      vehicleType: 'Fourgon',
+      vehicleIcon: '🚐',
+      primaryColor: AppColors.primaryBlue,
+      secondaryColor: AppColors.primaryBlue.withValues(alpha: 0.1),
     ),
-    TransportOption(
-      name: 'Transport u00c9conomique',
-      price: 1000,
-      deliveryTime: '6-24 heures',
-      icon: Icons.directions_bike,
-      iconColor: AppColors.primaryYellow,
+    Transporter(
+      id: 'motolivraison',
+      name: 'MotoLivraison',
+      logo: '🏍️',
+      isRecommended: false,
+      rating: 4.9,
+      reviewCount: 203,
+      price: 1800,
+      estimatedTime: '1h',
+      vehicleType: 'Moto',
+      vehicleIcon: '🏍️',
+      primaryColor: AppColors.primaryYellow,
+      secondaryColor: AppColors.primaryYellow.withValues(alpha: 0.1),
     ),
   ];
 
-  void _selectTransport(int index) {
+  void _selectTransporter(Transporter transporter) {
     setState(() {
-      _selectedTransportIndex = index;
+      _selectedTransporter = transporter;
     });
+
+    // Navigation immédiate vers l'écran de validation
+    final parcelToSend = Parcel(
+      id: _dummyParcel.id,
+      trackingNumber: _dummyParcel.trackingNumber,
+      status: _dummyParcel.status,
+      description: _dummyParcel.description,
+      createdAt: _dummyParcel.createdAt,
+      updatedAt: _dummyParcel.updatedAt,
+      estimatedDelivery: _dummyParcel.estimatedDelivery,
+      deliveryDate: _dummyParcel.deliveryDate,
+      pickupAddress: _dummyParcel.pickupAddress,
+      deliveryAddress: _dummyParcel.deliveryAddress,
+      sender: _dummyParcel.sender,
+      recipient: _dummyParcel.recipient,
+      weight: _dummyParcel.weight,
+      dimensions: _dummyParcel.dimensions,
+      price: transporter.price.toDouble(),
+      transportType: _getTransportTypeFromVehicle(transporter.vehicleType),
+      history: _dummyParcel.history,
+    );
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ValidationScreen(parcel: parcelToSend),
+      ),
+    );
   }
 
-  void _continue() {
-    if (_selectedTransportIndex >= 0) {
-      // Cru00e9er un objet Parcel avec l'option de transport su00e9lectionnu00e9e
-      final selectedTransportOption = _transportOptions[_selectedTransportIndex];
-      final parcelToSend = TransportMapper.createParcelWithTransport(
-        _dummyParcel,
-        selectedTransportOption,
-      );
-
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ValidationScreen(parcel: parcelToSend),
-        ),
-      );
+  TransportType _getTransportTypeFromVehicle(String vehicleType) {
+    switch (vehicleType.toLowerCase()) {
+      case 'moto':
+        return TransportType.moto;
+      case 'fourgon':
+        return TransportType.car;
+      case 'camion':
+        return TransportType.truck;
+      default:
+        return TransportType.standard;
     }
   }
 
@@ -117,37 +160,35 @@ class _TransportSelectionScreenState extends State<TransportSelectionScreen> {
           icon: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
           onPressed: () => Navigator.pop(context),
         ),
+        title: Text(
+          'Choisir transporteur',
+          style: AppTypography.h3.copyWith(
+            color: AppColors.textPrimary,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: false,
       ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // En-tu00eate de la page
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: ScreenHeader(
-                title: 'Su00e9lection du transport',
-                subtitle: 'Choisissez le mode de transport qui vous convient le mieux',
-              ),
+            // En-tête avec informations de trajet
+            TransportHeaderInfo(
+              fromCity: _dummyParcel.pickupAddress.city,
+              toCity: _dummyParcel.deliveryAddress.city,
+              estimatedDistance: '420 km',
             ),
 
-            // Liste des options de transport
+            // Liste des transporteurs
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(16.0),
-                child: TransportOptionsList(
-                  options: _transportOptions,
-                  selectedIndex: _selectedTransportIndex,
-                  onOptionSelected: _selectTransport,
+                child: NewTransportList(
+                  transporters: _transporters,
+                  onTransporterSelected: _selectTransporter,
                 ),
               ),
-            ),
-
-            // Bouton continuer
-            ContinueButtonFooter(
-              onPressed: _continue,
-              isEnabled: _selectedTransportIndex >= 0,
-              text: 'Continuer',
             ),
           ],
         ),

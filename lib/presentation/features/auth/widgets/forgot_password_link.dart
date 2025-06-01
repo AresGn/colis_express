@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/theme/app_typography.dart';
 
-/// Lien vers la page de ru00e9cupu00e9ration de mot de passe
+/// Lien vers la page de ré9cupé9ration de mot de passe
 class ForgotPasswordLink extends StatelessWidget {
   final VoidCallback onPressed;
 
@@ -15,7 +15,7 @@ class ForgotPasswordLink extends StatelessWidget {
       child: TextButton(
         onPressed: onPressed,
         child: Text(
-          'Mot de passe oubliu00e9?',
+          'Mot de passe oublié9?',
           style: AppTypography.body2.copyWith(
             color: AppColors.primaryGreen,
             fontWeight: FontWeight.w600,

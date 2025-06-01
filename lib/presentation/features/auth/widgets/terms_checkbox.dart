@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/theme/app_typography.dart';
 
-/// Case u00e0 cocher pour l'acceptation des conditions d'utilisation
+/// Case é0 cocher pour l'acceptation des conditions d'utilisation
 class TermsCheckbox extends StatelessWidget {
   final bool accepted;
   final VoidCallback onToggle;
@@ -41,7 +41,7 @@ class TermsCheckbox extends StatelessWidget {
                   ),
                   const TextSpan(text: ' et la '),
                   TextSpan(
-                    text: 'politique de confidentialitu00e9',
+                    text: 'politique de confidentialité9',
                     style: AppTypography.body2.copyWith(
                       color: AppColors.primaryGreen,
                       fontWeight: FontWeight.w500,

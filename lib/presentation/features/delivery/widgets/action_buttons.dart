@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-/// Boutons d'action pour l'u00e9cran de livraison confirmu00e9e
+/// Boutons d'action pour l'é9cran de livraison confirmé9e
 class ActionButtons extends StatelessWidget {
   final VoidCallback onHomePressed;
   final VoidCallback onDownloadPressed;
 
   const ActionButtons({
-    super.key, 
-    required this.onHomePressed, 
+    super.key,
+    required this.onHomePressed,
     required this.onDownloadPressed,
   });
 
@@ -18,7 +18,7 @@ class ActionButtons extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Bouton Retour u00e0 l'accueil
+          // Bouton Retour é0 l'accueil
           ElevatedButton(
             onPressed: onHomePressed,
             style: ElevatedButton.styleFrom(
@@ -28,20 +28,22 @@ class ActionButtons extends StatelessWidget {
               ),
               backgroundColor: const Color(0xFF008751), // Green
               foregroundColor: Colors.white, // White text
-              shadowColor: const Color(0xFF008751).withOpacity(0.4), // Green shadow
+              shadowColor: const Color(
+                0xFF008751,
+              ).withOpacity(0.4), // Green shadow
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 Icon(Icons.home),
                 SizedBox(width: 8),
-                Text('Retour u00e0 l\'accueil'),
+                Text('Retour é0 l\'accueil'),
               ],
             ),
           ),
           const SizedBox(height: 12),
 
-          // Bouton Tu00e9lu00e9charger le reu00e7u
+          // Bouton Té9lé9charger le reé7u
           OutlinedButton(
             onPressed: onDownloadPressed,
             style: OutlinedButton.styleFrom(
@@ -59,7 +61,7 @@ class ActionButtons extends StatelessWidget {
               children: const [
                 Icon(Icons.download),
                 SizedBox(width: 8),
-                Text('Tu00e9lu00e9charger le reu00e7u'),
+                Text('Té9lé9charger le reé7u'),
               ],
             ),
           ),

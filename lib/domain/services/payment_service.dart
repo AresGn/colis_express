@@ -21,17 +21,19 @@ class PaymentService {
     // Simulation d'un appel API
     await Future.delayed(const Duration(seconds: 2));
 
-    // Gu00e9nu00e9rer un ID unique et un numu00e9ro de transaction
+    // Gé9né9rer un ID unique et un numé9ro de transaction
     final id = 'p-${DateTime.now().millisecondsSinceEpoch}';
     final transactionId = 'TX${DateTime.now().year}${_getRandomNumber(6)}';
 
-    // Cru00e9er et retourner un nouveau paiement
+    // Cré9er et retourner un nouveau paiement
     return Payment(
       id: id,
       orderId: orderId,
       transactionId: transactionId,
       method: method,
-      status: PaymentStatus.completed, // Pour l'exemple, on suppose que le paiement ru00e9ussit toujours
+      status:
+          PaymentStatus
+              .completed, // Pour l'exemple, on suppose que le paiement ré9ussit toujours
       amount: amount,
       createdAt: DateTime.now(),
       completedAt: DateTime.now(),
@@ -39,12 +41,12 @@ class PaymentService {
     );
   }
 
-  /// Obtient les du00e9tails d'un paiement
+  /// Obtient les dé9tails d'un paiement
   Future<Payment?> getPaymentById(String paymentId) async {
     // Simulation d'un appel API
     await Future.delayed(const Duration(milliseconds: 800));
 
-    // Dans une vraie application, nous interrogerions la base de donnu00e9es
+    // Dans une vraie application, nous interrogerions la base de donné9es
     // Pour l'exemple, nous retournons un paiement fictif si l'ID commence par 'p-'
     if (paymentId.startsWith('p-')) {
       return Payment(
@@ -67,7 +69,7 @@ class PaymentService {
     // Simulation d'un appel API
     await Future.delayed(const Duration(seconds: 1));
 
-    // Dans une vraie application, nous interrogerions la base de donnu00e9es
+    // Dans une vraie application, nous interrogerions la base de donné9es
     // Pour l'exemple, nous retournons une liste de paiements fictifs
     return [
       Payment(
@@ -93,7 +95,7 @@ class PaymentService {
     ];
   }
 
-  // Mu00e9thode auxiliaire pour gu00e9nu00e9rer un numu00e9ro alu00e9atoire
+  // Mé9thode auxiliaire pour gé9né9rer un numé9ro alé9atoire
   String _getRandomNumber(int digits) {
     String result = '';
     for (int i = 0; i < digits; i++) {

@@ -4,7 +4,7 @@ import 'package:benin_express/presentation/core/theme/app_colors.dart';
 /// Types d'utilisateurs disponibles
 enum UserType { expediteur, livreur, customer }
 
-/// Widget qui permet de su00e9lectionner le type d'utilisateur (expu00e9diteur ou livreur)
+/// Widget qui permet de sé9lectionner le type d'utilisateur (expé9diteur ou livreur)
 class UserTypeSelector extends StatelessWidget {
   final UserType selectedUserType;
   final Function(UserType) onUserTypeChanged;
@@ -41,7 +41,7 @@ class UserTypeSelector extends StatelessWidget {
       children: const <Widget>[
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text('Expu00e9diteur'),
+          child: Text('Expé9diteur'),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0),

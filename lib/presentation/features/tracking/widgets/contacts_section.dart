@@ -4,7 +4,7 @@ import 'package:benin_express/domain/models/parcel.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/theme/app_typography.dart';
 
-/// Widget qui affiche les informations de l'expu00e9diteur et du destinataire
+/// Widget qui affiche les informations de l'expé9diteur et du destinataire
 class ContactsSection extends StatelessWidget {
   final Parcel parcel;
 
@@ -19,18 +19,36 @@ class ContactsSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Expu00e9diteur et Destinataire', style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              'Expé9diteur et Destinataire',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: 16),
-            _buildContactInfo(context, 'Expu00e9diteur', parcel.sender, Icons.person_outline),
+            _buildContactInfo(
+              context,
+              'Expé9diteur',
+              parcel.sender,
+              Icons.person_outline,
+            ),
             const Divider(height: 24),
-            _buildContactInfo(context, 'Destinataire', parcel.recipient, Icons.person),
+            _buildContactInfo(
+              context,
+              'Destinataire',
+              parcel.recipient,
+              Icons.person,
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildContactInfo(BuildContext context, String title, Contact contact, IconData icon) {
+  Widget _buildContactInfo(
+    BuildContext context,
+    String title,
+    Contact contact,
+    IconData icon,
+  ) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -47,14 +65,17 @@ class ContactsSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: AppTypography.caption.copyWith(
-                color: AppColors.textSecondary,
-              )),
+              Text(
+                title,
+                style: AppTypography.caption.copyWith(
+                  color: AppColors.textSecondary,
+                ),
+              ),
               const SizedBox(height: 4),
               Text(contact.name, style: AppTypography.body1),
               const SizedBox(height: 2),
               Text(contact.phoneNumber, style: AppTypography.body2),
-              if (contact.email?.isNotEmpty ?? false) ...[  
+              if (contact.email?.isNotEmpty ?? false) ...[
                 const SizedBox(height: 2),
                 Text(contact.email ?? '', style: AppTypography.body2),
               ],

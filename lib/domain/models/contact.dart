@@ -1,14 +1,10 @@
-/// Modu00e8le pour un contact (expu00e9diteur ou destinataire)
+/// Modé8le pour un contact (expé9diteur ou destinataire)
 class Contact {
   final String name;
   final String phoneNumber;
   final String? email;
 
-  Contact({
-    required this.name,
-    required this.phoneNumber,
-    this.email,
-  });
+  Contact({required this.name, required this.phoneNumber, this.email});
 
   factory Contact.fromJson(Map<String, dynamic> json) {
     return Contact(
@@ -19,10 +15,6 @@ class Contact {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'name': name, 
-      'phoneNumber': phoneNumber, 
-      'email': email,
-    };
+    return {'name': name, 'phoneNumber': phoneNumber, 'email': email};
   }
 }

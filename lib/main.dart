@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_theme.dart';
-import 'package:benin_express/presentation/features/onboarding/screens/splash_screen.dart';
+import 'package:benin_express/presentation/core/navigation/app_router.dart';
+import 'package:benin_express/presentation/core/navigation/route_names.dart';
 import 'package:benin_express/domain/services/service_locator.dart';
 
 void main() async {
@@ -22,8 +23,21 @@ class BeninExpressApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
-      themeMode: ThemeMode.light, // Utiliser le thème clair par défaut
-      home: const SplashScreen(), // Commencer par l'écran de démarrage
+      themeMode: ThemeMode.light,
+
+      // Configuration du système de navigation centralisé
+      navigatorKey: navigatorKey,
+      initialRoute: RouteNames.splash,
+      onGenerateRoute: AppRouter.generateRoute,
+
+      // Gestion des routes inconnues
+      onUnknownRoute:
+          (settings) => AppRouter.generateRoute(
+            RouteSettings(
+              name: RouteNames.notFound,
+              arguments: settings.arguments,
+            ),
+          ),
     );
   }
 }

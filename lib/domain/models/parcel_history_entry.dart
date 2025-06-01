@@ -1,4 +1,4 @@
-/// Modu00e8le pour les entru00e9es d'historique d'un colis
+/// Modé8le pour les entré9es d'historique d'un colis
 class ParcelHistoryEntry {
   final DateTime timestamp;
   final String status;

@@ -3,7 +3,7 @@ import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/theme/app_typography.dart';
 import 'package:benin_express/presentation/features/parcels/models/transport_option.dart';
 
-/// Carte affichant une option de transport avec ses du00e9tails
+/// Carte affichant une option de transport avec ses détails
 class TransportOptionCard extends StatelessWidget {
   final TransportOption option;
   final bool isSelected;
@@ -33,12 +33,12 @@ class TransportOptionCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            // Icu00f4ne et couleur
+            // Icône et couleur
             Container(
               width: 48,
               height: 48,
               decoration: BoxDecoration(
-                color: option.iconColor.withOpacity(0.1),
+                color: option.iconColor.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(option.icon, color: option.iconColor, size: 24),

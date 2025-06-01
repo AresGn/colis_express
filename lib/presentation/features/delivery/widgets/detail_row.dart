@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Widget pour afficher une ligne de du00e9tail avec label et valeur
+/// Widget pour afficher une ligne de dé9tail avec label et valeur
 class DetailRow extends StatelessWidget {
   final String label;
   final String value;

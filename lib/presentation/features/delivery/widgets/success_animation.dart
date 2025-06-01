@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Widget qui affiche une animation de succu00e8s avec des cercles concentriques
+/// Widget qui affiche une animation de succé8s avec des cercles concentriques
 class SuccessAnimation extends StatelessWidget {
   final double size;
   final Color primaryColor;
@@ -19,14 +19,14 @@ class SuccessAnimation extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            // Anneaux animu00e9s (simulu00e9s avec des containers)
+            // Anneaux animé9s (simulé9s avec des containers)
             Container(
               width: size,
               height: size,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: primaryColor.withOpacity(0.2),
+                  color: primaryColor.withValues(alpha: 0.2),
                   width: 8,
                 ),
               ),
@@ -37,12 +37,12 @@ class SuccessAnimation extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: primaryColor.withOpacity(0.3),
+                  color: primaryColor.withValues(alpha: 0.3),
                   width: 8,
                 ),
               ),
             ),
-            // Cercle vert du00e9gradu00e9 et icu00f4ne check
+            // Cercle vert dé9gradé9 et icu00f4ne check
             Container(
               width: size - 40,
               height: size - 40,
@@ -57,7 +57,7 @@ class SuccessAnimation extends StatelessWidget {
               child: const Icon(
                 Icons.check,
                 color: Colors.white,
-                size: 60, // Taille ajustu00e9e
+                size: 60, // Taille ajusté9e
               ),
             ),
           ],

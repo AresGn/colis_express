@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/widgets/custom_button.dart';
-import 'package:benin_express/presentation/features/home/home_screen.dart';
-import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart' show UserType;
+import 'package:benin_express/presentation/core/navigation/route_names.dart';
+import 'package:benin_express/presentation/core/navigation/route_guards.dart'
+    as guards;
+import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart'
+    show UserType;
 import 'package:benin_express/presentation/features/auth/widgets/register_header.dart';
 import 'package:benin_express/presentation/features/auth/widgets/registration_form.dart';
 import 'package:benin_express/presentation/features/auth/widgets/terms_checkbox.dart';
 import 'package:benin_express/presentation/features/auth/widgets/login_link.dart';
 
-/// u00c9cran d'inscription permettant aux utilisateurs de cru00e9er un compte
+/// u00c9cran d'inscription permettant aux utilisateurs de cré9er un compte
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -70,11 +73,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
           _isLoading = false;
         });
 
-        // Navigation vers l'u00e9cran principal apru00e8s inscription
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => HomeScreen(userType: UserType.expediteur),
-          ),
+        // Marquer l'utilisateur comme authentifié
+        guards.RouteGuards.setAuthenticated(true, guards.UserType.customer);
+
+        // Navigation vers l'é9cran principal apré8s inscription
+        Navigator.of(context).pushReplacementNamed(
+          RouteNames.customerHome,
+          arguments: {'userType': UserType.expediteur},
         );
       }
     } else if (!_acceptTerms) {
@@ -109,7 +114,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // En-tu00eate
+                  // En-téate
                   const RegisterHeader(),
                   const SizedBox(height: 32),
 
@@ -123,7 +128,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     obscurePassword: _obscurePassword,
                     obscureConfirmPassword: _obscureConfirmPassword,
                     togglePasswordVisibility: _togglePasswordVisibility,
-                    toggleConfirmPasswordVisibility: _toggleConfirmPasswordVisibility,
+                    toggleConfirmPasswordVisibility:
+                        _toggleConfirmPasswordVisibility,
                   ),
                   const SizedBox(height: 24),
 
@@ -136,7 +142,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   // Bouton d'inscription
                   CustomButton(
-                    text: 'Cru00e9er un compte',
+                    text: 'Cré9er un compte',
                     onPressed: _register,
                     isLoading: _isLoading,
                     variant: ButtonVariant.primary,
@@ -145,9 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 24),
 
                   // Lien vers la page de connexion
-                  LoginLink(
-                    onPressed: () => Navigator.pop(context),
-                  ),
+                  LoginLink(onPressed: () => Navigator.pop(context)),
                 ],
               ),
             ),

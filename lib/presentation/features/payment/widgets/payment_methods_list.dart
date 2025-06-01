@@ -20,9 +20,11 @@ class PaymentMethodsList extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Mu00e9thode de paiement', style: AppTypography.h3),
+        Text('Mé9thode de paiement', style: AppTypography.h3),
         const SizedBox(height: 16),
-        ...paymentMethods.map((method) => _buildPaymentMethodTile(context, method)).toList(),
+        ...paymentMethods
+            .map((method) => _buildPaymentMethodTile(context, method))
+            .toList(),
       ],
     );
   }
@@ -32,7 +34,7 @@ class PaymentMethodsList extends StatelessWidget {
 
     // Déterminer les couleurs de l'icône en fonction de la méthode de paiement
     List<Color> iconColors;
-    
+
     switch (method.id) {
       case 0: // Carte de crédit
         iconColors = [AppColors.primaryRed, AppColors.primaryBlue];
@@ -41,7 +43,10 @@ class PaymentMethodsList extends StatelessWidget {
         iconColors = [Colors.orange, Colors.deepOrange];
         break;
       case 2: // Paiement à la livraison
-        iconColors = [AppColors.primaryGreen, AppColors.primaryGreen.withOpacity(0.7)];
+        iconColors = [
+          AppColors.primaryGreen,
+          AppColors.primaryGreen.withValues(alpha: 0.7),
+        ];
         break;
       default:
         iconColors = [AppColors.primaryRed, AppColors.primaryBlue];
@@ -59,7 +64,8 @@ class PaymentMethodsList extends StatelessWidget {
             decoration: BoxDecoration(
               color: AppColors.white,
               border: Border.all(
-                color: isSelected ? AppColors.primaryRed : AppColors.borderLight,
+                color:
+                    isSelected ? AppColors.primaryRed : AppColors.borderLight,
                 width: isSelected ? 2 : 1,
               ),
               borderRadius: BorderRadius.circular(12),
@@ -80,7 +86,7 @@ class PaymentMethodsList extends StatelessWidget {
                   child: Icon(method.icon, color: Colors.white, size: 20),
                 ),
                 const SizedBox(width: 16),
-                
+
                 // Nom de la méthode
                 Expanded(
                   child: Text(
@@ -90,7 +96,7 @@ class PaymentMethodsList extends StatelessWidget {
                     ),
                   ),
                 ),
-                
+
                 // Radio button
                 Radio<int>(
                   value: method.id,

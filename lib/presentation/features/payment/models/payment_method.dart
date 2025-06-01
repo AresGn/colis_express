@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Modu00e8le de mu00e9thode de paiement
+/// Modé8le de mé9thode de paiement
 class PaymentMethod {
   final int id;
   final String name;

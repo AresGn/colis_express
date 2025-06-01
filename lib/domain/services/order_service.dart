@@ -19,7 +19,7 @@ class OrderService {
 
   OrderService._internal();
 
-  /// Cru00e9e une nouvelle commande
+  /// Cré9e une nouvelle commande
   Future<Order> createOrder({
     required String userId,
     required List<Parcel> parcels,
@@ -33,11 +33,11 @@ class OrderService {
       (sum, parcel) => sum + parcel.price,
     );
 
-    // Gu00e9nu00e9rer un ID unique et un numu00e9ro de commande
+    // Gé9né9rer un ID unique et un numé9ro de commande
     final id = IdGenerator.generateId('o');
     final orderNumber = IdGenerator.generateOrderNumber();
 
-    // Cru00e9er et retourner une nouvelle commande
+    // Cré9er et retourner une nouvelle commande
     return Order(
       id: id,
       orderNumber: orderNumber,
@@ -49,7 +49,7 @@ class OrderService {
     );
   }
 
-  /// Traite le paiement d'une commande (du00e9lu00e9gation au PaymentService)
+  /// Traite le paiement d'une commande (dé9lé9gation au PaymentService)
   Future<Payment> processPayment({
     required String orderId,
     required PaymentMethod method,
@@ -92,7 +92,7 @@ class OrderService {
     // Simulation d'un appel API
     await Future.delayed(const Duration(seconds: 1));
 
-    // Dans une vraie application, nous interrogerions la base de donnu00e9es
+    // Dans une vraie application, nous interrogerions la base de donné9es
     // Pour l'exemple, nous retournons une liste de commandes fictives
     return [
       Order(
@@ -120,7 +120,7 @@ class OrderService {
     ];
   }
 
-  /// Met u00e0 jour le statut d'une commande
+  /// Met é0 jour le statut d'une commande
   Future<Order> updateOrderStatus({
     required String orderId,
     required OrderStatus newStatus,
@@ -128,15 +128,15 @@ class OrderService {
     // Simulation d'un appel API
     await Future.delayed(const Duration(seconds: 1));
 
-    // Dans une vraie application, cela mettrait u00e0 jour une commande existante
+    // Dans une vraie application, cela mettrait é0 jour une commande existante
     final order = await getOrderById(orderId);
 
     if (order == null) {
       throw Exception('Commande non trouvée');
     }
 
-    // Dans une vraie application, nous mettrions u00e0 jour la base de donnu00e9es
-    // Pour l'exemple, nous retournons une nouvelle commande avec le statut mis u00e0 jour
+    // Dans une vraie application, nous mettrions é0 jour la base de donné9es
+    // Pour l'exemple, nous retournons une nouvelle commande avec le statut mis é0 jour
     return Order(
       id: order.id,
       orderNumber: order.orderNumber,
@@ -151,7 +151,11 @@ class OrderService {
   }
 
   /// Crée un colis fictif pour les exemples
-  Parcel _createDummyParcel(String id, String trackingNumber, {bool isExpress = false}) {
+  Parcel _createDummyParcel(
+    String id,
+    String trackingNumber, {
+    bool isExpress = false,
+  }) {
     return Parcel(
       id: id,
       trackingNumber: trackingNumber,
@@ -174,10 +178,7 @@ class OrderService {
         country: 'Bénin',
         district: '',
       ),
-      sender: Contact(
-        name: 'Jean Dupont',
-        phoneNumber: '+229 97123456',
-      ),
+      sender: Contact(name: 'Jean Dupont', phoneNumber: '+229 97123456'),
       recipient: Contact(
         name: isExpress ? 'Jean Adjo' : 'Marie Koumako',
         phoneNumber: isExpress ? '+229 95456789' : '+229 95789012',

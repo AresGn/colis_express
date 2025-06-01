@@ -1,9 +1,10 @@
 import 'package:benin_express/domain/models/transport_type.dart';
 
-/// Service pour les calculs liu00e9s aux colis (prix, du00e9lais, etc.)
+/// Service pour les calculs lié9s aux colis (prix, dé9lais, etc.)
 class ParcelCalculationService {
   // Singleton pattern
-  static final ParcelCalculationService _instance = ParcelCalculationService._internal();
+  static final ParcelCalculationService _instance =
+      ParcelCalculationService._internal();
 
   factory ParcelCalculationService() {
     return _instance;
@@ -12,19 +13,23 @@ class ParcelCalculationService {
   ParcelCalculationService._internal();
 
   /// Calcule le prix d'un colis en fonction du type de transport
-  double calculatePrice(TransportType transportType, {double? weight, String? dimensions}) {
+  double calculatePrice(
+    TransportType transportType, {
+    double? weight,
+    String? dimensions,
+  }) {
     final basePrice = 1000.0; // Prix de base en FCFA
     double price = basePrice * transportType.priceMultiplier;
-    
-    // Facteurs de prix supplu00e9mentaires en fonction du poids et des dimensions
+
+    // Facteurs de prix supplé9mentaires en fonction du poids et des dimensions
     if (weight != null && weight > 5.0) {
-      price += (weight - 5.0) * 100; // 100 FCFA par kg supplu00e9mentaire
+      price += (weight - 5.0) * 100; // 100 FCFA par kg supplé9mentaire
     }
-    
+
     return price;
   }
 
-  /// Calcule la date de livraison estimu00e9e en fonction du type de transport
+  /// Calcule la date de livraison estimé9e en fonction du type de transport
   DateTime calculateEstimatedDelivery(TransportType type) {
     switch (type) {
       case TransportType.express:

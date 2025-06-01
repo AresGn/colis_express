@@ -2,13 +2,14 @@ import 'package:benin_express/presentation/features/auth/widgets/user_type_selec
 import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/theme/app_typography.dart';
+import 'package:benin_express/presentation/core/navigation/route_names.dart';
 
 import 'package:benin_express/presentation/features/parcels/screens/new_parcel_screen.dart';
 
 /// Écran d'accueil principal de l'application
 class HomeScreen extends StatefulWidget {
   final UserType? userType;
-  
+
   const HomeScreen({super.key, this.userType});
 
   @override
@@ -85,10 +86,10 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             // Header avec salutation et actions rapides
             _buildHeader(),
-            
+
             // Colis récents
             _buildRecentParcels(),
-            
+
             // Section d'actions secondaires
             _buildSecondaryActions(),
           ],
@@ -100,26 +101,19 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildHeader() {
     return Container(
       padding: const EdgeInsets.all(24),
-      decoration: const BoxDecoration(
-        color: AppColors.white,
-      ),
+      decoration: const BoxDecoration(color: AppColors.white),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Salutation
-          Text(
-            'Bonjour, Jean 👋',
-            style: AppTypography.h2,
-          ),
+          Text('Bonjour, Jean 👋', style: AppTypography.h2),
           const SizedBox(height: 4),
           Text(
             'Que souhaitez-vous faire aujourd\'hui?',
-            style: AppTypography.body2.copyWith(
-              color: AppColors.textSecondary,
-            ),
+            style: AppTypography.body2.copyWith(color: AppColors.textSecondary),
           ),
           const SizedBox(height: 24),
-          
+
           // Bouton principal
           _buildNewParcelButton(),
         ],
@@ -153,9 +147,9 @@ class _HomeScreenState extends State<HomeScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const NewParcelScreen(
-                  userType: UserType.customer,
-                ),
+                builder:
+                    (context) =>
+                        const NewParcelScreen(userType: UserType.customer),
               ),
             );
           },
@@ -187,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                 ),
-                
+
                 // Icône flèche
                 Container(
                   width: 40,
@@ -196,10 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.white.withOpacity(0.2),
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                  ),
+                  child: const Icon(Icons.arrow_forward, color: Colors.white),
                 ),
               ],
             ),
@@ -219,10 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Colis récents',
-                style: AppTypography.h3,
-              ),
+              Text('Colis récents', style: AppTypography.h3),
               TextButton(
                 onPressed: () {
                   // TODO: Implémenter la navigation vers la liste complète
@@ -238,19 +226,20 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           const SizedBox(height: 16),
-          
+
           // Liste des colis récents
           _recentParcels.isEmpty
               ? _buildEmptyState()
               : ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: _recentParcels.length,
-                  separatorBuilder: (context, index) => const SizedBox(height: 12),
-                  itemBuilder: (context, index) {
-                    return _buildParcelCard(_recentParcels[index]);
-                  },
-                ),
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: _recentParcels.length,
+                separatorBuilder:
+                    (context, index) => const SizedBox(height: 12),
+                itemBuilder: (context, index) {
+                  return _buildParcelCard(_recentParcels[index]);
+                },
+              ),
         ],
       ),
     );
@@ -262,11 +251,7 @@ class _HomeScreenState extends State<HomeScreen> {
       alignment: Alignment.center,
       child: Column(
         children: [
-          Icon(
-            Icons.inbox_outlined,
-            size: 48,
-            color: AppColors.textTertiary,
-          ),
+          Icon(Icons.inbox_outlined, size: 48, color: AppColors.textTertiary),
           const SizedBox(height: 16),
           Text(
             'Aucun colis récent',
@@ -278,9 +263,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 8),
           Text(
             'Vos colis récents apparaîtront ici',
-            style: AppTypography.body2.copyWith(
-              color: AppColors.textTertiary,
-            ),
+            style: AppTypography.body2.copyWith(color: AppColors.textTertiary),
             textAlign: TextAlign.center,
           ),
         ],
@@ -328,7 +311,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(width: 16),
-                
+
                 // Informations du colis
                 Expanded(
                   child: Column(
@@ -416,12 +399,9 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Services',
-            style: AppTypography.h3,
-          ),
+          Text('Services', style: AppTypography.h3),
           const SizedBox(height: 16),
-          
+
           // Grille d'actions
           Row(
             children: [
@@ -482,11 +462,7 @@ class _HomeScreenState extends State<HomeScreen> {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  Icon(
-                    icon,
-                    color: AppColors.primaryGreen,
-                    size: 28,
-                  ),
+                  Icon(icon, color: AppColors.primaryGreen, size: 28),
                   const SizedBox(height: 8),
                   Text(
                     label,
@@ -511,6 +487,25 @@ class _HomeScreenState extends State<HomeScreen> {
         setState(() {
           _currentIndex = index;
         });
+
+        // Navigation selon l'onglet sélectionné
+        switch (index) {
+          case 0:
+            // Accueil - déjà sur l'écran d'accueil
+            break;
+          case 1:
+            // Contacts
+            Navigator.pushNamed(context, RouteNames.contacts);
+            break;
+          case 2:
+            // Suivi
+            Navigator.pushNamed(context, RouteNames.tracking);
+            break;
+          case 3:
+            // Profil
+            Navigator.pushNamed(context, RouteNames.profile);
+            break;
+        }
       },
       backgroundColor: AppColors.white,
       selectedItemColor: AppColors.primaryGreen,
@@ -523,14 +518,14 @@ class _HomeScreenState extends State<HomeScreen> {
           label: 'Accueil',
         ),
         BottomNavigationBarItem(
+          icon: Icon(Icons.contacts_outlined),
+          activeIcon: Icon(Icons.contacts),
+          label: 'Contacts',
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.search_outlined),
           activeIcon: Icon(Icons.search),
           label: 'Suivi',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.history_outlined),
-          activeIcon: Icon(Icons.history),
-          label: 'Historique',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person_outline),
@@ -547,9 +542,8 @@ class _HomeScreenState extends State<HomeScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const NewParcelScreen(
-              userType: UserType.customer,
-            ),
+            builder:
+                (context) => const NewParcelScreen(userType: UserType.customer),
           ),
         );
       },
@@ -564,9 +558,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(
-              color: AppColors.primaryGreen,
-            ),
+            decoration: BoxDecoration(color: AppColors.primaryGreen),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -596,6 +588,13 @@ class _HomeScreenState extends State<HomeScreen> {
           // Options du drawer qui ne sont pas dans la barre de navigation
           const Divider(),
           _buildDrawerItem(
+            icon: Icons.contacts,
+            title: 'Mes contacts',
+            onTap: () {
+              Navigator.pushNamed(context, RouteNames.contacts);
+            },
+          ),
+          _buildDrawerItem(
             icon: Icons.notifications,
             title: 'Notifications',
             onTap: () {
@@ -606,14 +605,14 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icons.settings,
             title: 'Paramètres',
             onTap: () {
-              // TODO: Naviguer vers l'écran des paramètres
+              Navigator.pushNamed(context, RouteNames.settings);
             },
           ),
           _buildDrawerItem(
             icon: Icons.help,
             title: 'Aide',
             onTap: () {
-              // TODO: Naviguer vers l'écran d'aide
+              Navigator.pushNamed(context, RouteNames.help);
             },
           ),
           _buildDrawerItem(
@@ -627,7 +626,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-  
+
   // Helper method to build drawer items
   Widget _buildDrawerItem({
     required IconData icon,

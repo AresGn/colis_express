@@ -4,7 +4,7 @@ import 'package:benin_express/domain/models/parcel_history_entry.dart';
 import 'package:benin_express/domain/models/parcel_status.dart';
 import 'package:benin_express/domain/models/transport_type.dart';
 
-/// Modu00e8le de donnu00e9es pour un colis
+/// Modé8le de donné9es pour un colis
 class Parcel {
   final String id;
   final String trackingNumber;
@@ -44,7 +44,7 @@ class Parcel {
     this.history,
   });
 
-  /// Factory pour cru00e9er un objet Parcel u00e0 partir d'un JSON
+  /// Factory pour cré9er un objet Parcel é0 partir d'un JSON
   factory Parcel.fromJson(Map<String, dynamic> json) {
     return Parcel(
       id: json['id'],
@@ -54,12 +54,14 @@ class Parcel {
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt:
           json['updatedAt'] != null ? DateTime.parse(json['updatedAt']) : null,
-      estimatedDelivery: json['estimatedDelivery'] != null
-          ? DateTime.parse(json['estimatedDelivery'])
-          : null,
-      deliveryDate: json['deliveryDate'] != null
-          ? DateTime.parse(json['deliveryDate'])
-          : null,
+      estimatedDelivery:
+          json['estimatedDelivery'] != null
+              ? DateTime.parse(json['estimatedDelivery'])
+              : null,
+      deliveryDate:
+          json['deliveryDate'] != null
+              ? DateTime.parse(json['deliveryDate'])
+              : null,
       pickupAddress: Address.fromJson(json['pickupAddress']),
       deliveryAddress: Address.fromJson(json['deliveryAddress']),
       sender: Contact.fromJson(json['sender']),
@@ -68,11 +70,12 @@ class Parcel {
       dimensions: json['dimensions'],
       price: json['price'].toDouble(),
       transportType: TransportType.values.byName(json['transportType']),
-      history: json['history'] != null
-          ? (json['history'] as List)
-              .map((entry) => ParcelHistoryEntry.fromJson(entry))
-              .toList()
-          : null,
+      history:
+          json['history'] != null
+              ? (json['history'] as List)
+                  .map((entry) => ParcelHistoryEntry.fromJson(entry))
+                  .toList()
+              : null,
     );
   }
 

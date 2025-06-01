@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/theme/app_typography.dart';
 
-/// Lien vers l'u00e9cran d'inscription en bas de l'u00e9cran de connexion
+/// Lien vers l'é9cran d'inscription en bas de l'é9cran de connexion
 class RegisterLink extends StatelessWidget {
   final VoidCallback onPressed;
 
@@ -13,10 +13,7 @@ class RegisterLink extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          'Vous n\'avez pas de compte?',
-          style: AppTypography.body2,
-        ),
+        Text('Vous n\'avez pas de compte?', style: AppTypography.body2),
         TextButton(
           onPressed: onPressed,
           child: Text(

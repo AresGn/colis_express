@@ -1,8 +1,8 @@
-import 'package:benin_express/presentation/features/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/theme/app_typography.dart';
 import 'package:benin_express/presentation/core/widgets/custom_button.dart';
+import 'package:benin_express/presentation/core/navigation/route_names.dart';
 import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart'
     show UserType;
 
@@ -63,11 +63,10 @@ class PaymentConfirmationScreen extends StatelessWidget {
                 CustomButton(
                   text: 'Retour à l\'accueil',
                   onPressed: () {
-                    Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                        builder: (context) => HomeScreen(userType: userType),
-                      ),
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      RouteNames.customerHome,
                       (route) => false,
+                      arguments: {'userType': userType},
                     );
                   },
                   variant: ButtonVariant.primary,
@@ -96,7 +95,7 @@ class PaymentConfirmationScreen extends StatelessWidget {
       width: 120,
       height: 120,
       decoration: BoxDecoration(
-        color: AppColors.primaryGreen.withOpacity(0.1),
+        color: AppColors.primaryGreen.withValues(alpha: 0.1),
         shape: BoxShape.circle,
       ),
       child: const Icon(
@@ -116,7 +115,7 @@ class PaymentConfirmationScreen extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Carte d'information avec titre, icu00f4ne et contenu personnalisu00e9
+/// Carte d'information avec titre, icu00f4ne et contenu personnalisé9
 class InfoCard extends StatelessWidget {
   final String title;
   final IconData icon;
@@ -8,10 +8,10 @@ class InfoCard extends StatelessWidget {
   final Widget content;
 
   const InfoCard({
-    super.key, 
-    required this.title, 
-    required this.icon, 
-    required this.iconColor, 
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.iconColor,
     required this.content,
   });
 

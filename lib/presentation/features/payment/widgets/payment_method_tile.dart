@@ -28,14 +28,15 @@ class PaymentMethodTile extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(
-          color: value == groupValue
-              ? const Color(0xFF10B981)
-              : Colors.transparent,
+          color:
+              value == groupValue
+                  ? const Color(0xFF10B981)
+                  : Colors.transparent,
           width: 1.5,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

@@ -24,21 +24,23 @@ class _NewParcelScreenState extends State<NewParcelScreen> {
   // Clé du formulaire pour validation
   final _formKey = GlobalKey<FormState>();
 
-  // Contrôleurs pour les champs de formulaire
-  final TextEditingController _expediteurNomController =
-      TextEditingController();
-  final TextEditingController _expediteurTelController =
-      TextEditingController();
+  // Contrôleurs pour les champs de formulaire avec valeurs par défaut pour faciliter les tests
+  final TextEditingController _expediteurNomController = TextEditingController(
+    text: 'Jean Dupont',
+  );
+  final TextEditingController _expediteurTelController = TextEditingController(
+    text: '97123456',
+  );
   final TextEditingController _expediteurAdresseController =
-      TextEditingController();
+      TextEditingController(text: 'Quartier Ganhi, Cotonou');
   final TextEditingController _destinataireNomController =
-      TextEditingController();
+      TextEditingController(text: 'Marie Kone');
   final TextEditingController _destinataireTelController =
-      TextEditingController();
+      TextEditingController(text: '96654321');
   final TextEditingController _destinataireAdresseController =
-      TextEditingController();
+      TextEditingController(text: 'Quartier Banikoara, Parakou');
   final TextEditingController _colisDescriptionController =
-      TextEditingController();
+      TextEditingController(text: 'Documents importants');
 
   // État de la photo
   File? _colisPhoto;
@@ -175,7 +177,7 @@ class _NewParcelScreenState extends State<NewParcelScreen> {
         color: AppColors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             offset: const Offset(0, -1),
             blurRadius: 4,
           ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
+import 'package:benin_express/presentation/core/theme/app_typography.dart';
 
 /// Bouton principal personnalisé avec différentes variantes
+/// Version unifiée qui combine les fonctionnalités des deux implémentations précédentes
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
@@ -10,6 +12,13 @@ class CustomButton extends StatelessWidget {
   final IconData? icon;
   final ButtonVariant variant;
   final ButtonSize size;
+
+  // Propriétés additionnelles pour la compatibilité avec l'ancienne version
+  final Color? backgroundColor;
+  final Color? textColor;
+  final double? height;
+  final double? width;
+  final BorderRadius? borderRadius;
 
   const CustomButton({
     super.key,
@@ -20,25 +29,32 @@ class CustomButton extends StatelessWidget {
     this.icon,
     this.variant = ButtonVariant.primary,
     this.size = ButtonSize.medium,
+    this.backgroundColor,
+    this.textColor,
+    this.height,
+    this.width,
+    this.borderRadius,
   });
 
   @override
   Widget build(BuildContext context) {
-    // Définir les styles en fonction de la variante
-    final backgroundColor = _getBackgroundColor();
-    final textColor = _getTextColor();
+    // Utiliser les couleurs personnalisées si fournies, sinon utiliser les variantes
+    final effectiveBackgroundColor = backgroundColor ?? _getBackgroundColor();
+    final effectiveTextColor = textColor ?? _getTextColor();
     final borderColor = _getBorderColor();
 
-    // Définir les dimensions en fonction de la taille
+    // Utiliser la hauteur personnalisée si fournie, sinon utiliser le padding par défaut
+    final effectiveHeight = height ?? _getDefaultHeight();
     final padding = _getPadding();
-    final textStyle = _getTextStyle(textColor);
+    final textStyle = _getTextStyle(effectiveTextColor);
 
     // Construire le bouton
     return SizedBox(
-      width: isFullWidth ? double.infinity : null,
+      width: isFullWidth ? double.infinity : width,
+      height: effectiveHeight,
       child: _buildButton(
-        backgroundColor: backgroundColor,
-        textColor: textColor,
+        backgroundColor: effectiveBackgroundColor,
+        textColor: effectiveTextColor,
         borderColor: borderColor,
         padding: padding,
         textStyle: textStyle,
@@ -109,12 +125,26 @@ class CustomButton extends StatelessWidget {
           foregroundColor: textColor,
           disabledBackgroundColor: AppColors.buttonDisabled,
           disabledForegroundColor: Colors.white,
-          padding: padding,
+          padding: height != null ? EdgeInsets.zero : padding,
           elevation: 0,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          shape: RoundedRectangleBorder(
+            borderRadius: borderRadius ?? BorderRadius.circular(8),
+          ),
         ),
         child: buttonContent,
       );
+    }
+  }
+
+  // Méthode pour obtenir la hauteur par défaut selon la taille
+  double _getDefaultHeight() {
+    switch (size) {
+      case ButtonSize.small:
+        return 36;
+      case ButtonSize.medium:
+        return 48;
+      case ButtonSize.large:
+        return 56;
     }
   }
 

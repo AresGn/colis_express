@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/widgets/custom_input_field.dart';
 
-/// Formulaire d'inscription avec champs pour nom, tu00e9lu00e9phone, email et mot de passe
+/// Formulaire d'inscription avec champs pour nom, té9lé9phone, email et mot de passe
 class RegistrationForm extends StatelessWidget {
   final TextEditingController nameController;
   final TextEditingController phoneController;
@@ -36,7 +36,10 @@ class RegistrationForm extends StatelessWidget {
         CustomInputField(
           controller: nameController,
           label: 'Nom complet',
-          prefixIcon: const Icon(Icons.person_outline, color: AppColors.textSecondary),
+          prefixIcon: const Icon(
+            Icons.person_outline,
+            color: AppColors.textSecondary,
+          ),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Veuillez saisir votre nom';
@@ -46,18 +49,21 @@ class RegistrationForm extends StatelessWidget {
         ),
         const SizedBox(height: 16),
 
-        // Numu00e9ro de tu00e9lu00e9phone
+        // Numé9ro de té9lé9phone
         CustomInputField(
           controller: phoneController,
-          label: 'Numu00e9ro de tu00e9lu00e9phone',
-          prefixIcon: const Icon(Icons.phone_outlined, color: AppColors.textSecondary),
+          label: 'Numé9ro de té9lé9phone',
+          prefixIcon: const Icon(
+            Icons.phone_outlined,
+            color: AppColors.textSecondary,
+          ),
           keyboardType: TextInputType.phone,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Veuillez saisir votre numu00e9ro de tu00e9lu00e9phone';
+              return 'Veuillez saisir votre numé9ro de té9lé9phone';
             }
             if (value.length < 8) {
-              return 'Numu00e9ro de tu00e9lu00e9phone invalide';
+              return 'Numé9ro de té9lé9phone invalide';
             }
             return null;
           },
@@ -68,7 +74,10 @@ class RegistrationForm extends StatelessWidget {
         CustomInputField(
           controller: emailController,
           label: 'Email',
-          prefixIcon: const Icon(Icons.email_outlined, color: AppColors.textSecondary),
+          prefixIcon: const Icon(
+            Icons.email_outlined,
+            color: AppColors.textSecondary,
+          ),
           keyboardType: TextInputType.emailAddress,
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -87,7 +96,10 @@ class RegistrationForm extends StatelessWidget {
           controller: passwordController,
           label: 'Mot de passe',
           obscureText: obscurePassword,
-          prefixIcon: const Icon(Icons.lock_outline, color: AppColors.textSecondary),
+          prefixIcon: const Icon(
+            Icons.lock_outline,
+            color: AppColors.textSecondary,
+          ),
           suffixIcon: IconButton(
             icon: Icon(
               obscurePassword ? Icons.visibility : Icons.visibility_off,
@@ -100,7 +112,7 @@ class RegistrationForm extends StatelessWidget {
               return 'Veuillez saisir un mot de passe';
             }
             if (value.length < 6) {
-              return 'Le mot de passe doit contenir au moins 6 caractu00e8res';
+              return 'Le mot de passe doit contenir au moins 6 caracté8res';
             }
             return null;
           },
@@ -112,7 +124,10 @@ class RegistrationForm extends StatelessWidget {
           controller: confirmPasswordController,
           label: 'Confirmer le mot de passe',
           obscureText: obscureConfirmPassword,
-          prefixIcon: const Icon(Icons.lock_outline, color: AppColors.textSecondary),
+          prefixIcon: const Icon(
+            Icons.lock_outline,
+            color: AppColors.textSecondary,
+          ),
           suffixIcon: IconButton(
             icon: Icon(
               obscureConfirmPassword ? Icons.visibility : Icons.visibility_off,

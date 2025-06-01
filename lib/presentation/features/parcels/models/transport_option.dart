@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Modu00e8le de donnu00e9es pour les options de transport
+/// Modèle de données pour les options de transport
 class TransportOption {
   final String name;
   final int price;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/theme/app_typography.dart';
 
-/// Widget pour le lien de connexion en bas de l'u00e9cran d'inscription
+/// Widget pour le lien de connexion en bas de l'é9cran d'inscription
 class LoginLink extends StatelessWidget {
   final VoidCallback onPressed;
 
@@ -14,7 +14,7 @@ class LoginLink extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'Vous avez du00e9ju00e0 un compte ?',
+          'Vous avez dé9jé0 un compte ?',
           style: AppTypography.body2.copyWith(color: AppColors.textSecondary),
         ),
         TextButton(

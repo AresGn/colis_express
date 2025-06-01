@@ -4,7 +4,7 @@ import 'package:benin_express/presentation/features/parcels/models/transport_opt
 
 /// Utilitaire pour convertir entre les types d'options de transport
 class TransportMapper {
-  /// Convertit une TransportOption en TransportType pour le modu00e8le Parcel
+  /// Convertit une TransportOption en TransportType pour le modé8le Parcel
   static TransportType mapToTransportType(TransportOption option) {
     switch (option.name) {
       case 'Transport Express':
@@ -14,11 +14,11 @@ class TransportMapper {
       case 'Transport u00c9conomique':
         return TransportType.economic;
       default:
-        return TransportType.standard; // Valeur par du00e9faut
+        return TransportType.standard; // Valeur par dé9faut
     }
   }
 
-  /// Cru00e9e un Parcel avec l'option de transport su00e9lectionnu00e9e
+  /// Cré9e un Parcel avec l'option de transport sé9lectionné9e
   static Parcel createParcelWithTransport(
     Parcel baseParcel,
     TransportOption selectedOption,

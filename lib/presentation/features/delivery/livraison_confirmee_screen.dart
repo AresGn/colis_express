@@ -4,17 +4,17 @@ import 'package:benin_express/presentation/features/delivery/widgets/info_card.d
 import 'package:benin_express/presentation/features/delivery/widgets/detail_row.dart';
 import 'package:benin_express/presentation/features/delivery/widgets/action_buttons.dart';
 
-/// u00c9cran de confirmation de livraison ru00e9ussie
+/// u00c9cran de confirmation de livraison ré9ussie
 class LivraisonConfirmeeScreen extends StatelessWidget {
   const LivraisonConfirmeeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5), // Fond gu00e9nu00e9ral
+      backgroundColor: const Color(0xFFF5F5F5), // Fond gé9né9ral
       appBar: AppBar(
-        title: const Text('Livraison confirmu00e9e'),
-        backgroundColor: Colors.white, // En-tu00eate fixe blanc
+        title: const Text('Livraison confirmé9e'),
+        backgroundColor: Colors.white, // En-téate fixe blanc
         elevation: 1,
         centerTitle: true,
         foregroundColor: const Color(0xFF1F2937), // Texte sombre
@@ -23,7 +23,7 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Animation de succu00e8s
+            // Animation de succé8s
             const SuccessAnimation(),
 
             // Message principal
@@ -36,7 +36,7 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'Livraison ru00e9ussie !',
+                    'Livraison ré9ussie !',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -46,7 +46,7 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Le colis #CEB-2415 u00e0 destination de Abomey-Calavi a u00e9tu00e9 livru00e9. Merci pour votre confiance avec Colis Express Bu00e9nin.',
+                    'Le colis #CEB-2415 é0 destination de Abomey-Calavi a é9té9 livré9. Merci pour votre confiance avec Colis Express Bé9nin.',
                     style: TextStyle(fontSize: 16, color: Colors.grey[700]),
                     textAlign: TextAlign.center,
                   ),
@@ -56,9 +56,9 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // Du00e9tails de la livraison
+            // Dé9tails de la livraison
             InfoCard(
-              title: 'Du00e9tails de la livraison',
+              title: 'Dé9tails de la livraison',
               icon: Icons.local_shipping,
               iconColor: const Color(0xFF10B981),
               content: GridView.count(
@@ -86,7 +86,7 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
               iconColor: const Color(0xFF3B82F6),
               content: Column(
                 children: [
-                  // Du00e9part
+                  // Dé9part
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -101,7 +101,7 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
                             Text(
-                              'Point de du00e9part',
+                              'Point de dé9part',
                               style: TextStyle(
                                 color: Color(0xFF6B7280),
                                 fontSize: 14,
@@ -125,16 +125,12 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
                   Row(
                     children: [
                       const SizedBox(width: 8),
-                      Container(
-                        height: 16,
-                        width: 1,
-                        color: Colors.grey[300],
-                      ),
+                      Container(height: 16, width: 1, color: Colors.grey[300]),
                       const SizedBox(width: 8),
                     ],
                   ),
                   const SizedBox(height: 2),
-                  // Arrivu00e9e
+                  // Arrivé9e
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -182,7 +178,7 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
-                      Text('Mu00e9thode'),
+                      Text('Mé9thode'),
                       Text(
                         'Carte Visa ****4528',
                         style: TextStyle(fontWeight: FontWeight.w600),
@@ -207,7 +203,7 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
             // Boutons d'action
             ActionButtons(
               onHomePressed: () {
-                // Retour u00e0 l'u00e9cran d'accueil
+                // Retour é0 l'é9cran d'accueil
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   '/',
@@ -215,10 +211,10 @@ class LivraisonConfirmeeScreen extends StatelessWidget {
                 );
               },
               onDownloadPressed: () {
-                // TODO: Implu00e9menter l'action Tu00e9lu00e9charger reu00e7u
+                // TODO: Implé9menter l'action Té9lé9charger reé7u
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('Tu00e9lu00e9chargement du reu00e7u...'),
+                    content: Text('Té9lé9chargement du reé7u...'),
                     duration: Duration(seconds: 2),
                   ),
                 );

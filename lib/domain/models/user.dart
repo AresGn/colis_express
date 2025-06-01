@@ -1,4 +1,4 @@
-/// Modu00e8le de donnu00e9es pour un utilisateur
+/// Modé8le de donné9es pour un utilisateur
 class User {
   final String id;
   final String name;
@@ -34,12 +34,14 @@ class User {
       role: UserRole.values.byName(json['role']),
       isActive: json['isActive'],
       createdAt: DateTime.parse(json['createdAt']),
-      lastLogin: json['lastLogin'] != null ? DateTime.parse(json['lastLogin']) : null,
-      savedAddresses: json['savedAddresses'] != null
-          ? (json['savedAddresses'] as List)
-              .map((e) => Address.fromJson(e))
-              .toList()
-          : null,
+      lastLogin:
+          json['lastLogin'] != null ? DateTime.parse(json['lastLogin']) : null,
+      savedAddresses:
+          json['savedAddresses'] != null
+              ? (json['savedAddresses'] as List)
+                  .map((e) => Address.fromJson(e))
+                  .toList()
+              : null,
     );
   }
 
@@ -61,15 +63,15 @@ class User {
 
 /// Ru00f4les possibles pour un utilisateur
 enum UserRole {
-  customer,     // Client
-  transporter,  // Transporteur
-  admin,        // Administrateur
+  customer, // Client
+  transporter, // Transporteur
+  admin, // Administrateur
 }
 
-/// Modu00e8le pour une adresse
+/// Modé8le pour une adresse
 class Address {
   final String id;
-  final String label;  // Ex: "Domicile", "Bureau"
+  final String label; // Ex: "Domicile", "Bureau"
   final String street;
   final String city;
   final String state;

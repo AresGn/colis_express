@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:benin_express/presentation/core/theme/app_colors.dart';
 import 'package:benin_express/presentation/core/widgets/custom_button.dart';
 import 'package:benin_express/presentation/core/widgets/custom_input_field.dart';
-import 'package:benin_express/presentation/features/home/home_screen.dart';
+import 'package:benin_express/presentation/core/navigation/route_names.dart';
+import 'package:benin_express/presentation/core/navigation/route_guards.dart'
+    as Guards;
 import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart';
 import 'package:benin_express/presentation/features/auth/widgets/phone_input_field.dart';
 import 'package:benin_express/presentation/features/auth/widgets/forgot_password_link.dart';
 import 'package:benin_express/presentation/features/auth/widgets/register_link.dart';
 
-/// u00c9cran de connexion permettant aux utilisateurs de se connecter u00e0 leur compte
+/// u00c9cran de connexion permettant aux utilisateurs de se connecter é0 leur compte
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -50,11 +52,35 @@ class _LoginScreenState extends State<LoginScreen> {
             _isLoading = false;
           });
 
-          // Navigation vers l'u00e9cran principal avec le type d'utilisateur
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => HomeScreen(userType: _selectedUserType),
+          // Convertir le type d'utilisateur pour les guards
+          Guards.UserType guardUserType;
+          switch (_selectedUserType) {
+            case UserType.expediteur:
+              guardUserType = Guards.UserType.customer;
+              break;
+            case UserType.livreur:
+              guardUserType = Guards.UserType.transporter;
+              break;
+            default:
+              guardUserType = Guards.UserType.customer;
+          }
+
+          // Marquer l'utilisateur comme authentifié
+          Guards.RouteGuards.setAuthenticated(true, guardUserType);
+
+          // Debug: Afficher un message de succès
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Connexion réussie! Type: $_selectedUserType'),
+              backgroundColor: AppColors.success,
+              duration: const Duration(seconds: 1),
             ),
+          );
+
+          // Navigation vers l'é9cran principal avec le type d'utilisateur
+          Navigator.of(context).pushReplacementNamed(
+            RouteNames.customerHome,
+            arguments: {'userType': _selectedUserType},
           );
         }
       });
@@ -63,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String? _validatePhone(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Veuillez entrer votre numu00e9ro de tu00e9lu00e9phone';
+      return 'Veuillez entrer votre numé9ro de té9lé9phone';
     }
     return null;
   }
@@ -89,8 +115,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 16),
-                  
-                  // Su00e9lecteur de type d'utilisateur
+
+                  // Sé9lecteur de type d'utilisateur
                   UserTypeSelector(
                     selectedUserType: _selectedUserType,
                     onUserTypeChanged: (type) {
@@ -117,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   const SizedBox(height: 32),
 
-                  // Champ de numu00e9ro de tu00e9lu00e9phone
+                  // Champ de numé9ro de té9lé9phone
                   PhoneInputField(
                     controller: _phoneController,
                     validator: _validatePhone,
@@ -133,7 +159,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     validator: _validatePassword,
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                        _obscurePassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
                         color: AppColors.textSecondary,
                       ),
                       onPressed: _togglePasswordVisibility,
@@ -142,13 +170,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   const SizedBox(height: 16),
 
-                  // Lien mot de passe oubliu00e9
+                  // Lien mot de passe oublié9
                   ForgotPasswordLink(
                     onPressed: () {
-                      // Navigation vers l'u00e9cran de ru00e9cupu00e9ration de mot de passe
+                      // Navigation vers l'é9cran de ré9cupé9ration de mot de passe
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text('Fonctionnalitu00e9 u00e0 venir'),
+                          content: Text('Fonctionnalité9 é0 venir'),
                         ),
                       );
                     },
@@ -168,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   // Lien vers l'inscription
                   RegisterLink(
                     onPressed: () {
-                      // Navigation vers l'u00e9cran d'inscription
+                      // Navigation vers l'é9cran d'inscription
                       Navigator.pushNamed(context, '/register');
                     },
                   ),

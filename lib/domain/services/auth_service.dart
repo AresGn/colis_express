@@ -4,29 +4,26 @@ import 'package:benin_express/domain/models/user.dart';
 class AuthService {
   // Singleton pattern
   static final AuthService _instance = AuthService._internal();
-  
+
   factory AuthService() {
     return _instance;
   }
-  
+
   AuthService._internal();
-  
-  // Utilisateur actuellement connectu00e9
+
+  // Utilisateur actuellement connecté9
   User? _currentUser;
-  
+
   // Getters
   User? get currentUser => _currentUser;
   bool get isAuthenticated => _currentUser != null;
-  
-  // Mu00e9thode pour connecter un utilisateur
-  Future<User> login({
-    required String email,
-    required String password,
-  }) async {
+
+  // Mé9thode pour connecter un utilisateur
+  Future<User> login({required String email, required String password}) async {
     // Simulation d'un appel API
     await Future.delayed(const Duration(seconds: 1));
-    
-    // Dans une vraie application, cela vu00e9rifierait les identifiants
+
+    // Dans une vraie application, cela vé9rifierait les identifiants
     // Pour l'exemple, nous retournons un utilisateur fictif
     _currentUser = User(
       id: 'u-12345',
@@ -45,7 +42,7 @@ class AuthService {
           street: 'Quartier Akpakpa',
           city: 'Cotonou',
           state: 'Littoral',
-          country: 'Bu00e9nin',
+          country: 'Bé9nin',
           isDefault: true,
         ),
         Address(
@@ -54,16 +51,16 @@ class AuthService {
           street: 'Boulevard Saint-Michel',
           city: 'Cotonou',
           state: 'Littoral',
-          country: 'Bu00e9nin',
+          country: 'Bé9nin',
           isDefault: false,
         ),
       ],
     );
-    
+
     return _currentUser!;
   }
-  
-  // Mu00e9thode pour inscrire un nouvel utilisateur
+
+  // Mé9thode pour inscrire un nouvel utilisateur
   Future<User> register({
     required String name,
     required String email,
@@ -72,8 +69,8 @@ class AuthService {
   }) async {
     // Simulation d'un appel API
     await Future.delayed(const Duration(seconds: 1));
-    
-    // Dans une vraie application, cela cru00e9erait un nouvel utilisateur
+
+    // Dans une vraie application, cela cré9erait un nouvel utilisateur
     // Pour l'exemple, nous retournons un utilisateur fictif
     _currentUser = User(
       id: 'u-${DateTime.now().millisecondsSinceEpoch}',
@@ -87,28 +84,28 @@ class AuthService {
       lastLogin: DateTime.now(),
       savedAddresses: [],
     );
-    
+
     return _currentUser!;
   }
-  
-  // Mu00e9thode pour du00e9connecter l'utilisateur
+
+  // Mé9thode pour dé9connecter l'utilisateur
   Future<void> logout() async {
     // Simulation d'un appel API
     await Future.delayed(const Duration(milliseconds: 500));
-    
+
     _currentUser = null;
   }
-  
-  // Mu00e9thode pour ru00e9cupu00e9rer le mot de passe
+
+  // Mé9thode pour ré9cupé9rer le mot de passe
   Future<void> forgotPassword(String email) async {
     // Simulation d'un appel API
     await Future.delayed(const Duration(seconds: 1));
-    
-    // Dans une vraie application, cela enverrait un email de ru00e9initialisation
+
+    // Dans une vraie application, cela enverrait un email de ré9initialisation
     // Pour l'exemple, nous ne faisons rien de particulier
   }
-  
-  // Mu00e9thode pour mettre u00e0 jour le profil utilisateur
+
+  // Mé9thode pour mettre é0 jour le profil utilisateur
   Future<User> updateProfile({
     required String userId,
     String? name,
@@ -118,12 +115,12 @@ class AuthService {
   }) async {
     // Simulation d'un appel API
     await Future.delayed(const Duration(seconds: 1));
-    
+
     if (_currentUser == null) {
-      throw Exception('Utilisateur non connectu00e9');
+      throw Exception('Utilisateur non connecté9');
     }
-    
-    // Mettre u00e0 jour les informations de l'utilisateur
+
+    // Mettre é0 jour les informations de l'utilisateur
     _currentUser = User(
       id: _currentUser!.id,
       name: name ?? _currentUser!.name,
@@ -136,11 +133,11 @@ class AuthService {
       lastLogin: _currentUser!.lastLogin,
       savedAddresses: _currentUser!.savedAddresses,
     );
-    
+
     return _currentUser!;
   }
-  
-  // Mu00e9thode pour ajouter une adresse au profil utilisateur
+
+  // Mé9thode pour ajouter une adresse au profil utilisateur
   Future<User> addAddress({
     required String label,
     required String street,
@@ -154,12 +151,12 @@ class AuthService {
   }) async {
     // Simulation d'un appel API
     await Future.delayed(const Duration(seconds: 1));
-    
+
     if (_currentUser == null) {
-      throw Exception('Utilisateur non connectu00e9');
+      throw Exception('Utilisateur non connecté9');
     }
-    
-    // Cru00e9er une nouvelle adresse
+
+    // Cré9er une nouvelle adresse
     final newAddress = Address(
       id: 'a-${DateTime.now().millisecondsSinceEpoch}',
       label: label,
@@ -172,11 +169,11 @@ class AuthService {
       latitude: latitude,
       longitude: longitude,
     );
-    
-    // Mettre u00e0 jour la liste d'adresses
+
+    // Mettre é0 jour la liste d'adresses
     final addresses = _currentUser!.savedAddresses ?? [];
-    
-    // Si la nouvelle adresse est du00e9finie comme par du00e9faut, mettre u00e0 jour les autres adresses
+
+    // Si la nouvelle adresse est dé9finie comme par dé9faut, mettre é0 jour les autres adresses
     if (isDefault) {
       for (int i = 0; i < addresses.length; i++) {
         if (addresses[i].isDefault) {
@@ -195,10 +192,10 @@ class AuthService {
         }
       }
     }
-    
+
     addresses.add(newAddress);
-    
-    // Mettre u00e0 jour l'utilisateur
+
+    // Mettre é0 jour l'utilisateur
     _currentUser = User(
       id: _currentUser!.id,
       name: _currentUser!.name,
@@ -211,7 +208,7 @@ class AuthService {
       lastLogin: _currentUser!.lastLogin,
       savedAddresses: addresses,
     );
-    
+
     return _currentUser!;
   }
 }

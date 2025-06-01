@@ -17,9 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // Index de l'onglet actif dans la barre de navigation
-  int _currentIndex = 0;
-
   // Liste des parcels récents (statique pour l'exemple)
   final List<ParcelPreview> _recentParcels = [
     ParcelPreview(
@@ -54,9 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColors.background,
       appBar: _buildAppBar(),
       body: _buildBody(),
-      bottomNavigationBar: _buildBottomNavBar(),
-      floatingActionButton: _buildFloatingActionButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       drawer: _buildDrawer(),
     );
   }
@@ -409,7 +403,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icons.search,
                 label: 'Suivi colis',
                 onTap: () {
-                  // TODO: Implémenter la navigation vers le suivi de colis
+                  Navigator.pushNamed(context, RouteNames.tracking);
                 },
               ),
               const SizedBox(width: 16),
@@ -417,7 +411,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: Icons.payment_outlined,
                 label: 'Paiements',
                 onTap: () {
-                  // TODO: Implémenter la navigation vers les paiements
+                  Navigator.pushNamed(
+                    context,
+                    RouteNames.payment,
+                    arguments: {
+                      'amount': 0.0,
+                      'orderId': '',
+                      'userType': widget.userType ?? UserType.customer,
+                    },
+                  );
                 },
               ),
               const SizedBox(width: 16),
@@ -477,78 +479,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildBottomNavBar() {
-    return BottomNavigationBar(
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-
-        // Navigation selon l'onglet sélectionné
-        switch (index) {
-          case 0:
-            // Accueil - déjà sur l'écran d'accueil
-            break;
-          case 1:
-            // Contacts
-            Navigator.pushNamed(context, RouteNames.contacts);
-            break;
-          case 2:
-            // Suivi
-            Navigator.pushNamed(context, RouteNames.tracking);
-            break;
-          case 3:
-            // Profil
-            Navigator.pushNamed(context, RouteNames.profile);
-            break;
-        }
-      },
-      backgroundColor: AppColors.white,
-      selectedItemColor: AppColors.primaryGreen,
-      unselectedItemColor: AppColors.textTertiary,
-      type: BottomNavigationBarType.fixed,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home_outlined),
-          activeIcon: Icon(Icons.home),
-          label: 'Accueil',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.contacts_outlined),
-          activeIcon: Icon(Icons.contacts),
-          label: 'Contacts',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.search_outlined),
-          activeIcon: Icon(Icons.search),
-          label: 'Suivi',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person_outline),
-          activeIcon: Icon(Icons.person),
-          label: 'Profil',
-        ),
-      ],
-    );
-  }
-
-  Widget _buildFloatingActionButton() {
-    return FloatingActionButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder:
-                (context) => const NewParcelScreen(userType: UserType.customer),
-          ),
-        );
-      },
-      backgroundColor: AppColors.primaryGreen,
-      child: const Icon(Icons.add),
     );
   }
 

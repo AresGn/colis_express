@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
 
 /// Types d'utilisateurs disponibles
 enum UserType { expediteur, livreur, customer }

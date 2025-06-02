@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/widgets/section_container.dart';
-import 'package:benin_express/presentation/core/widgets/custom_input_field.dart';
+import 'package:agbantche/presentation/core/widgets/section_container.dart';
+import 'package:agbantche/presentation/core/widgets/custom_input_field.dart';
 
 /// Widget de formulaire pour les informations d'adresse (expéditeur ou destinataire)
 class AddressFormSection extends StatelessWidget {

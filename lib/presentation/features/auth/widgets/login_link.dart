@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
 
 /// Widget pour le lien de connexion en bas de l'é9cran d'inscription
 class LoginLink extends StatelessWidget {

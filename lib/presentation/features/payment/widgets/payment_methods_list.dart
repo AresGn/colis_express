@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
-import 'package:benin_express/presentation/features/payment/models/payment_method.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/features/payment/models/payment_method.dart';
 
 class PaymentMethodsList extends StatelessWidget {
   final List<PaymentMethod> paymentMethods;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
 
 /// Container avec titre pour regrouper des éléments associés
 class SectionContainer extends StatelessWidget {

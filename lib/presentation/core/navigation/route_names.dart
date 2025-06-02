@@ -7,6 +7,16 @@ class RouteNames {
   static const String login = '/login';
   static const String register = '/register';
 
+  // Routes d'intégration post-connexion
+  static const String setupWelcome = '/setup/welcome';
+  static const String personalInfoSetup = '/setup/personal-info';
+  static const String addressSetup = '/setup/address';
+  static const String contactsSetup = '/setup/contacts';
+  static const String deliveryPreferencesSetup = '/setup/delivery-preferences';
+  static const String notificationPreferencesSetup =
+      '/setup/notification-preferences';
+  static const String setupCompletion = '/setup/completion';
+
   // Routes principales pour les clients (expéditeurs/destinataires)
   static const String customerHome = '/customer/home';
   static const String newParcel = '/customer/new-parcel';
@@ -60,6 +70,13 @@ class RouteNames {
     welcome,
     login,
     register,
+    setupWelcome,
+    personalInfoSetup,
+    addressSetup,
+    contactsSetup,
+    deliveryPreferencesSetup,
+    notificationPreferencesSetup,
+    setupCompletion,
     customerHome,
     newParcel,
     transportSelection,
@@ -99,6 +116,13 @@ class RouteNames {
 
   // Routes protégées (nécessitent une authentification)
   static const List<String> protectedRoutes = [
+    setupWelcome,
+    personalInfoSetup,
+    addressSetup,
+    contactsSetup,
+    deliveryPreferencesSetup,
+    notificationPreferencesSetup,
+    setupCompletion,
     customerHome,
     newParcel,
     transportSelection,

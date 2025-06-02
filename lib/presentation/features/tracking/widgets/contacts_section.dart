@@ -1,8 +1,8 @@
-import 'package:benin_express/domain/models/contact.dart';
+import 'package:agbantche/domain/models/contact.dart';
 import 'package:flutter/material.dart';
-import 'package:benin_express/domain/models/parcel.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/domain/models/parcel.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
 
 /// Widget qui affiche les informations de l'expé9diteur et du destinataire
 class ContactsSection extends StatelessWidget {

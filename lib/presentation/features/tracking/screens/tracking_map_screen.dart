@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/features/tracking/widgets/delivery_info_card.dart';
-import 'package:benin_express/presentation/features/tracking/widgets/simulated_map_widget.dart';
-import 'package:benin_express/presentation/features/tracking/widgets/map_controls_widget.dart';
-import 'package:benin_express/presentation/features/tracking/widgets/delivery_simulation_widget.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/features/tracking/widgets/delivery_info_card.dart';
+import 'package:agbantche/presentation/features/tracking/widgets/simulated_map_widget.dart';
+import 'package:agbantche/presentation/features/tracking/widgets/map_controls_widget.dart';
+import 'package:agbantche/presentation/features/tracking/widgets/delivery_simulation_widget.dart';
 
 /// Écran affichant la carte de suivi d'un colis
 /// Version temporaire simplifiée pour éviter les crashes OSM

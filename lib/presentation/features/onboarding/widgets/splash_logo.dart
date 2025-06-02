@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
 
 class SplashLogo extends StatefulWidget {
   const SplashLogo({super.key});

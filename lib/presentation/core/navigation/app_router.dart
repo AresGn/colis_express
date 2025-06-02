@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/navigation/route_names.dart';
-import 'package:benin_express/presentation/core/navigation/route_guards.dart';
+import 'package:agbantche/presentation/core/navigation/route_names.dart';
+import 'package:agbantche/presentation/core/navigation/route_guards.dart';
 
 // Import des écrans existants
-import 'package:benin_express/presentation/features/onboarding/screens/splash_screen.dart';
-import 'package:benin_express/presentation/features/onboarding/screens/welcome_screen.dart';
-import 'package:benin_express/presentation/features/auth/screens/login_screen.dart';
-import 'package:benin_express/presentation/features/auth/screens/register_screen.dart';
-import 'package:benin_express/presentation/features/home/screens/home_screen.dart';
-import 'package:benin_express/presentation/features/parcels/screens/new_parcel_screen.dart';
-import 'package:benin_express/presentation/features/parcels/screens/transport_selection_screen.dart';
-import 'package:benin_express/presentation/features/parcels/screens/confirmation_screen.dart';
-import 'package:benin_express/presentation/features/payment/screens/payment_screen.dart';
-import 'package:benin_express/presentation/features/payment/screens/payment_confirmation_screen.dart';
-import 'package:benin_express/presentation/features/tracking/screens/tracking_screen.dart';
-import 'package:benin_express/presentation/features/tracking/screens/tracking_details_screen.dart';
-import 'package:benin_express/presentation/features/tracking/screens/tracking_map_screen.dart';
-import 'package:benin_express/presentation/features/delivery/livraison_confirmee_screen.dart';
-import 'package:benin_express/presentation/features/contacts/screens/contacts_screen.dart';
-import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart'
+import 'package:agbantche/presentation/features/onboarding/screens/splash_screen.dart';
+import 'package:agbantche/presentation/features/onboarding/screens/welcome_screen.dart';
+import 'package:agbantche/presentation/features/auth/screens/login_screen.dart';
+import 'package:agbantche/presentation/features/auth/screens/register_screen.dart';
+import 'package:agbantche/presentation/features/home/screens/home_screen.dart';
+import 'package:agbantche/presentation/features/parcels/screens/new_parcel_screen.dart';
+import 'package:agbantche/presentation/features/parcels/screens/transport_selection_screen.dart';
+import 'package:agbantche/presentation/features/parcels/screens/confirmation_screen.dart';
+import 'package:agbantche/presentation/features/payment/screens/payment_screen.dart';
+import 'package:agbantche/presentation/features/payment/screens/payment_confirmation_screen.dart';
+import 'package:agbantche/presentation/features/tracking/screens/tracking_screen.dart';
+import 'package:agbantche/presentation/features/tracking/screens/tracking_details_screen.dart';
+import 'package:agbantche/presentation/features/tracking/screens/tracking_map_screen.dart';
+import 'package:agbantche/presentation/features/delivery/livraison_confirmee_screen.dart';
+import 'package:agbantche/presentation/features/contacts/screens/contacts_screen.dart';
+import 'package:agbantche/presentation/features/onboarding/screens/setup_welcome_screen.dart';
+import 'package:agbantche/presentation/features/onboarding/screens/personal_info_setup_screen.dart';
+import 'package:agbantche/presentation/features/onboarding/screens/address_setup_screen.dart';
+import 'package:agbantche/presentation/features/onboarding/screens/contacts_setup_screen.dart';
+import 'package:agbantche/presentation/features/onboarding/screens/delivery_preferences_setup_screen.dart';
+import 'package:agbantche/presentation/features/onboarding/screens/notification_preferences_setup_screen.dart';
+import 'package:agbantche/presentation/features/onboarding/screens/setup_completion_screen.dart';
+import 'package:agbantche/presentation/features/auth/widgets/user_type_selector.dart'
     as AuthUserType;
 
 /// Router principal de l'application avec gestion des guards et des routes nommées
@@ -61,6 +68,28 @@ class AppRouter {
 
       case RouteNames.register:
         return const RegisterScreen();
+
+      // Routes d'intégration post-connexion
+      case RouteNames.setupWelcome:
+        return const SetupWelcomeScreen();
+
+      case RouteNames.personalInfoSetup:
+        return const PersonalInfoSetupScreen();
+
+      case RouteNames.addressSetup:
+        return const AddressSetupScreen();
+
+      case RouteNames.contactsSetup:
+        return const ContactsSetupScreen();
+
+      case RouteNames.deliveryPreferencesSetup:
+        return const DeliveryPreferencesSetupScreen();
+
+      case RouteNames.notificationPreferencesSetup:
+        return const NotificationPreferencesSetupScreen();
+
+      case RouteNames.setupCompletion:
+        return const SetupCompletionScreen();
 
       // Routes principales pour les clients
       case RouteNames.customerHome:

@@ -1,4 +1,4 @@
-package com.beninexpress.benin_express
+package com.agbantche.app
 
 import io.flutter.embedding.android.FlutterActivity
 

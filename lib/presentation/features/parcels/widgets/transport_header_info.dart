@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
 
 /// Widget d'en-tête affichant les informations de trajet
 class TransportHeaderInfo extends StatelessWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/features/onboarding/widgets/splash_logo.dart';
-import 'package:benin_express/presentation/features/onboarding/widgets/splash_branding.dart';
-import 'package:benin_express/presentation/features/onboarding/widgets/splash_loading_indicator.dart';
-import 'package:benin_express/presentation/features/onboarding/widgets/splash_version_tag.dart';
-import 'package:benin_express/presentation/features/onboarding/screens/welcome_screen.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/features/onboarding/widgets/splash_logo.dart';
+import 'package:agbantche/presentation/features/onboarding/widgets/splash_branding.dart';
+import 'package:agbantche/presentation/features/onboarding/widgets/splash_loading_indicator.dart';
+import 'package:agbantche/presentation/features/onboarding/widgets/splash_version_tag.dart';
+import 'package:agbantche/presentation/features/onboarding/screens/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/widgets/screen_header.dart';
-import 'package:benin_express/presentation/features/payment/models/payment_method.dart';
-import 'package:benin_express/presentation/features/payment/widgets/amount_summary.dart';
-import 'package:benin_express/presentation/features/payment/widgets/card_form.dart';
-import 'package:benin_express/presentation/features/payment/widgets/payment_button.dart';
-import 'package:benin_express/presentation/features/payment/widgets/payment_methods_list.dart';
-import 'package:benin_express/presentation/features/payment/screens/payment_confirmation_screen.dart';
-import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart'
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/widgets/screen_header.dart';
+import 'package:agbantche/presentation/features/payment/models/payment_method.dart';
+import 'package:agbantche/presentation/features/payment/widgets/amount_summary.dart';
+import 'package:agbantche/presentation/features/payment/widgets/card_form.dart';
+import 'package:agbantche/presentation/features/payment/widgets/payment_button.dart';
+import 'package:agbantche/presentation/features/payment/widgets/payment_methods_list.dart';
+import 'package:agbantche/presentation/features/payment/screens/payment_confirmation_screen.dart';
+import 'package:agbantche/presentation/features/auth/widgets/user_type_selector.dart'
     show UserType;
 
 /// Écran de paiement pour finaliser une commande
@@ -100,12 +100,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => PaymentConfirmationScreen(
-            amount: widget.amount,
-            orderId: widget.orderId,
-            paymentMethod: selectedMethod.name,
-            userType: widget.userType,
-          ),
+          builder:
+              (context) => PaymentConfirmationScreen(
+                amount: widget.amount,
+                orderId: widget.orderId,
+                paymentMethod: selectedMethod.name,
+                userType: widget.userType,
+              ),
         ),
       );
     }

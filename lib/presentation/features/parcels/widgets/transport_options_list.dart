@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/features/parcels/models/transport_option.dart';
-import 'package:benin_express/presentation/features/parcels/widgets/transport_option_card.dart';
+import 'package:agbantche/presentation/features/parcels/models/transport_option.dart';
+import 'package:agbantche/presentation/features/parcels/widgets/transport_option_card.dart';
 
 /// Liste des options de transport disponibles
 class TransportOptionsList extends StatelessWidget {

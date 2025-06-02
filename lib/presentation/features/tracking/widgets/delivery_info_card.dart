@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
-import 'package:benin_express/presentation/core/widgets/custom_button.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/widgets/custom_button.dart';
 
 /// Widget affichant les informations du livreur et les options de contact
 class DeliveryInfoCard extends StatelessWidget {
@@ -64,7 +64,9 @@ class DeliveryInfoCard extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: AppColors.primaryGreen.withOpacity(0.1),
                         image: const DecorationImage(
-                          image: AssetImage('assets/images/placeholder_avatar.png'),
+                          image: AssetImage(
+                            'assets/images/placeholder_avatar.png',
+                          ),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -104,7 +106,9 @@ class DeliveryInfoCard extends StatelessWidget {
                                   vertical: 2,
                                 ),
                                 decoration: BoxDecoration(
-                                  color: AppColors.primaryGreen.withOpacity(0.1),
+                                  color: AppColors.primaryGreen.withOpacity(
+                                    0.1,
+                                  ),
                                   borderRadius: BorderRadius.circular(4),
                                 ),
                                 child: Text(

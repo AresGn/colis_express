@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
-import 'package:benin_express/presentation/core/widgets/custom_button.dart';
-import 'package:benin_express/presentation/features/auth/screens/login_screen.dart';
-import 'package:benin_express/presentation/features/auth/screens/register_screen.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/widgets/custom_button.dart';
+import 'package:agbantche/presentation/features/auth/screens/login_screen.dart';
+import 'package:agbantche/presentation/features/auth/screens/register_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -77,7 +77,7 @@ class WelcomeScreen extends StatelessWidget {
 
         // Nom de l'application
         Text(
-          'Bénin Express',
+          'Agbantché',
           style: AppTypography.h1.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.bold,

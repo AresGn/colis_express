@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
 
 /// Widget pour les contrôles de la carte (boutons plein écran, retour, etc.)
 class MapControlsWidget extends StatelessWidget {

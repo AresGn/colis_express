@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/widgets/section_container.dart';
-import 'package:benin_express/presentation/core/widgets/custom_input_field.dart';
-import 'package:benin_express/presentation/features/parcels/widgets/parcel_photo_picker.dart';
+import 'package:agbantche/presentation/core/widgets/section_container.dart';
+import 'package:agbantche/presentation/core/widgets/custom_input_field.dart';
+import 'package:agbantche/presentation/features/parcels/widgets/parcel_photo_picker.dart';
 
 /// Section du formulaire pour les informations du colis
 class ParcelInfoSection extends StatelessWidget {

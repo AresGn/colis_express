@@ -1,11 +1,11 @@
-import 'package:benin_express/domain/models/parcel.dart';
-import 'package:benin_express/domain/models/address.dart';
-import 'package:benin_express/domain/models/contact.dart';
-import 'package:benin_express/domain/models/parcel_status.dart';
-import 'package:benin_express/domain/models/transport_type.dart';
-import 'package:benin_express/domain/services/parcel_calculation_service.dart';
-import 'package:benin_express/domain/services/parcel_history_service.dart';
-import 'package:benin_express/domain/utils/id_generator.dart';
+import 'package:agbantche/domain/models/parcel.dart';
+import 'package:agbantche/domain/models/address.dart';
+import 'package:agbantche/domain/models/contact.dart';
+import 'package:agbantche/domain/models/parcel_status.dart';
+import 'package:agbantche/domain/models/transport_type.dart';
+import 'package:agbantche/domain/services/parcel_calculation_service.dart';
+import 'package:agbantche/domain/services/parcel_history_service.dart';
+import 'package:agbantche/domain/utils/id_generator.dart';
 
 /// Service responsable de la gestion des colis
 class ParcelService {

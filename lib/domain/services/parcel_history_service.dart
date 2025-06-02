@@ -1,10 +1,11 @@
-import 'package:benin_express/domain/models/parcel_status.dart';
-import 'package:benin_express/domain/models/parcel_history_entry.dart';
+import 'package:agbantche/domain/models/parcel_status.dart';
+import 'package:agbantche/domain/models/parcel_history_entry.dart';
 
 /// Service de gestion de l'historique des colis
 class ParcelHistoryService {
   // Singleton pattern
-  static final ParcelHistoryService _instance = ParcelHistoryService._internal();
+  static final ParcelHistoryService _instance =
+      ParcelHistoryService._internal();
 
   factory ParcelHistoryService() {
     return _instance;
@@ -20,7 +21,7 @@ class ParcelHistoryService {
     String? location,
   }) {
     final history = List<ParcelHistoryEntry>.from(existingHistory ?? []);
-    
+
     history.add(
       ParcelHistoryEntry(
         timestamp: DateTime.now(),
@@ -29,7 +30,7 @@ class ParcelHistoryService {
         location: location,
       ),
     );
-    
+
     return history;
   }
 
@@ -49,7 +50,7 @@ class ParcelHistoryService {
   List<ParcelHistoryEntry> generateDummyHistory(ParcelStatus status) {
     final history = <ParcelHistoryEntry>[];
     final now = DateTime.now();
-    
+
     // Entrée initiale
     history.add(
       ParcelHistoryEntry(
@@ -59,7 +60,7 @@ class ParcelHistoryService {
         location: 'Système',
       ),
     );
-    
+
     // Ajout d'entrées en fonction du statut actuel
     if (status.index >= ParcelStatus.pickedUp.index) {
       history.add(
@@ -71,7 +72,7 @@ class ParcelHistoryService {
         ),
       );
     }
-    
+
     if (status.index >= ParcelStatus.inTransit.index) {
       history.add(
         ParcelHistoryEntry(
@@ -82,7 +83,7 @@ class ParcelHistoryService {
         ),
       );
     }
-    
+
     if (status.index >= ParcelStatus.outForDelivery.index) {
       history.add(
         ParcelHistoryEntry(
@@ -93,7 +94,7 @@ class ParcelHistoryService {
         ),
       );
     }
-    
+
     if (status == ParcelStatus.delivered) {
       history.add(
         ParcelHistoryEntry(
@@ -104,7 +105,7 @@ class ParcelHistoryService {
         ),
       );
     }
-    
+
     return history;
   }
 }

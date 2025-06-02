@@ -1,7 +1,7 @@
-import 'package:benin_express/domain/models/parcel_status.dart';
+import 'package:agbantche/domain/models/parcel_status.dart';
 import 'package:flutter/material.dart';
-import 'package:benin_express/domain/models/parcel.dart';
-import 'package:benin_express/presentation/features/tracking/widgets/timeline_step.dart';
+import 'package:agbantche/domain/models/parcel.dart';
+import 'package:agbantche/presentation/features/tracking/widgets/timeline_step.dart';
 
 /// Widget qui affiche la timeline des events de suivi d'un colis
 class TrackingTimeline extends StatelessWidget {
@@ -18,7 +18,10 @@ class TrackingTimeline extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Suivi de la livraison', style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              'Suivi de la livraison',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: 16),
             _buildTimelineSteps(),
           ],
@@ -29,10 +32,13 @@ class TrackingTimeline extends StatelessWidget {
 
   Widget _buildTimelineSteps() {
     // Étapes de la timeline en fonction du statut du colis
-    final bool isProcessing = parcel.status.index >= ParcelStatus.processing.index;
+    final bool isProcessing =
+        parcel.status.index >= ParcelStatus.processing.index;
     final bool isPickedUp = parcel.status.index >= ParcelStatus.pickedUp.index;
-    final bool isInTransit = parcel.status.index >= ParcelStatus.inTransit.index;
-    final bool isOutForDelivery = parcel.status.index >= ParcelStatus.outForDelivery.index;
+    final bool isInTransit =
+        parcel.status.index >= ParcelStatus.inTransit.index;
+    final bool isOutForDelivery =
+        parcel.status.index >= ParcelStatus.outForDelivery.index;
     final bool isDelivered = parcel.status == ParcelStatus.delivered;
 
     return Column(
@@ -47,47 +53,56 @@ class TrackingTimeline extends StatelessWidget {
           title: 'En cours de préparation',
           time: isProcessing ? _formatDateTime(parcel.updatedAt) : '-',
           description: 'Votre colis est en cours de préparation.',
-          status: isProcessing 
-              ? TrackingEventStatus.completed 
-              : TrackingEventStatus.upcoming,
+          status:
+              isProcessing
+                  ? TrackingEventStatus.completed
+                  : TrackingEventStatus.upcoming,
         ),
         TimelineStep(
           title: 'Colis collecté',
           time: isPickedUp ? _formatDateTime(parcel.updatedAt) : '-',
           description: 'Le colis a été collecté par notre transporteur.',
-          status: isPickedUp 
-              ? TrackingEventStatus.completed 
-              : TrackingEventStatus.upcoming,
+          status:
+              isPickedUp
+                  ? TrackingEventStatus.completed
+                  : TrackingEventStatus.upcoming,
         ),
         TimelineStep(
           title: 'En transit',
           time: isInTransit ? _formatDateTime(parcel.updatedAt) : '-',
           description: 'Votre colis est en route vers sa destination.',
-          status: isInTransit 
-              ? (isOutForDelivery ? TrackingEventStatus.completed : TrackingEventStatus.current)
-              : TrackingEventStatus.upcoming,
+          status:
+              isInTransit
+                  ? (isOutForDelivery
+                      ? TrackingEventStatus.completed
+                      : TrackingEventStatus.current)
+                  : TrackingEventStatus.upcoming,
         ),
         TimelineStep(
           title: 'En cours de livraison',
           time: isOutForDelivery ? _formatDateTime(parcel.updatedAt) : '-',
           description: 'Le livreur est en route vers l\'adresse de livraison.',
-          status: isOutForDelivery 
-              ? (isDelivered ? TrackingEventStatus.completed : TrackingEventStatus.current)
-              : TrackingEventStatus.upcoming,
+          status:
+              isOutForDelivery
+                  ? (isDelivered
+                      ? TrackingEventStatus.completed
+                      : TrackingEventStatus.current)
+                  : TrackingEventStatus.upcoming,
         ),
         TimelineStep(
           title: 'Livré',
           time: isDelivered ? _formatDateTime(parcel.updatedAt) : '-',
           description: 'Votre colis a été livré avec succès.',
-          status: isDelivered 
-              ? TrackingEventStatus.completed 
-              : TrackingEventStatus.upcoming,
+          status:
+              isDelivered
+                  ? TrackingEventStatus.completed
+                  : TrackingEventStatus.upcoming,
           isLast: true,
         ),
       ],
     );
   }
-  
+
   // Formater la date et l'heure pour l'affichage
   String _formatDateTime(DateTime? dateTime) {
     if (dateTime == null) return '-';

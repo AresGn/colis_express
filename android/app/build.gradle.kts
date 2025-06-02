@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.beninexpress.benin_express"
+    namespace = "com.agbantche.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973"
 
@@ -22,7 +22,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.beninexpress.benin_express"
+        applicationId = "com.agbantche.app"
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

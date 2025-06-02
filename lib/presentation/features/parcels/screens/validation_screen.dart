@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/domain/models/parcel.dart';
-import 'package:benin_express/domain/models/address.dart';
-import 'package:benin_express/domain/models/transport_type.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
-import 'package:benin_express/presentation/core/widgets/custom_button.dart';
-import 'package:benin_express/presentation/core/widgets/screen_header.dart';
-import 'package:benin_express/presentation/features/parcels/screens/confirmation_screen.dart';
+import 'package:agbantche/domain/models/parcel.dart';
+import 'package:agbantche/domain/models/address.dart';
+import 'package:agbantche/domain/models/transport_type.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/widgets/custom_button.dart';
+import 'package:agbantche/presentation/core/widgets/screen_header.dart';
+import 'package:agbantche/presentation/features/parcels/screens/confirmation_screen.dart';
 
 class ValidationScreen extends StatelessWidget {
   final Parcel parcel;

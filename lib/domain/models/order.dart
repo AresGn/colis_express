@@ -1,4 +1,4 @@
-import 'package:benin_express/domain/models/parcel.dart';
+import 'package:agbantche/domain/models/parcel.dart';
 
 /// Statuts possibles pour une commande
 enum OrderStatus {

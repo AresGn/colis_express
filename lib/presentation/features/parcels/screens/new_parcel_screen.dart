@@ -1,12 +1,12 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/widgets/custom_button.dart';
-import 'package:benin_express/presentation/features/parcels/widgets/address_form_section.dart';
-import 'package:benin_express/presentation/features/parcels/widgets/parcel_info_section.dart';
-import 'package:benin_express/presentation/features/parcels/widgets/parcel_photo_picker.dart';
-import 'package:benin_express/presentation/features/parcels/screens/transport_selection_screen.dart';
-import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/widgets/custom_button.dart';
+import 'package:agbantche/presentation/features/parcels/widgets/address_form_section.dart';
+import 'package:agbantche/presentation/features/parcels/widgets/parcel_info_section.dart';
+import 'package:agbantche/presentation/features/parcels/widgets/parcel_photo_picker.dart';
+import 'package:agbantche/presentation/features/parcels/screens/transport_selection_screen.dart';
+import 'package:agbantche/presentation/features/auth/widgets/user_type_selector.dart';
 
 // Using the UserType enum from auth/widgets/user_type_selector.dart
 // Previously: enum UserType { customer, transporter, admin }

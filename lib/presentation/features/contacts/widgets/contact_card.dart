@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
-import 'package:benin_express/domain/models/saved_contact.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/domain/models/saved_contact.dart';
 
 /// Carte affichant un contact sauvegardé
 class ContactCard extends StatelessWidget {
@@ -23,9 +23,10 @@ class ContactCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
-        border: contact.isDefault 
-            ? Border.all(color: AppColors.primaryGreen, width: 2)
-            : Border.all(color: AppColors.borderLight),
+        border:
+            contact.isDefault
+                ? Border.all(color: AppColors.primaryGreen, width: 2)
+                : Border.all(color: AppColors.borderLight),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.04),
@@ -52,7 +53,7 @@ class ContactCard extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      contact.name.isNotEmpty 
+                      contact.name.isNotEmpty
                           ? contact.name[0].toUpperCase()
                           : '?',
                       style: AppTypography.h4.copyWith(
@@ -63,7 +64,7 @@ class ContactCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 12),
-                
+
                 // Nom et label
                 Expanded(
                   child: Column(
@@ -111,10 +112,13 @@ class ContactCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                
+
                 // Menu d'actions
                 PopupMenuButton<String>(
-                  icon: const Icon(Icons.more_vert, color: AppColors.textSecondary),
+                  icon: const Icon(
+                    Icons.more_vert,
+                    color: AppColors.textSecondary,
+                  ),
                   onSelected: (value) {
                     switch (value) {
                       case 'edit':
@@ -125,34 +129,42 @@ class ContactCard extends StatelessWidget {
                         break;
                     }
                   },
-                  itemBuilder: (context) => [
-                    const PopupMenuItem(
-                      value: 'edit',
-                      child: Row(
-                        children: [
-                          Icon(Icons.edit, size: 20),
-                          SizedBox(width: 8),
-                          Text('Modifier'),
-                        ],
-                      ),
-                    ),
-                    const PopupMenuItem(
-                      value: 'delete',
-                      child: Row(
-                        children: [
-                          Icon(Icons.delete, size: 20, color: AppColors.error),
-                          SizedBox(width: 8),
-                          Text('Supprimer', style: TextStyle(color: AppColors.error)),
-                        ],
-                      ),
-                    ),
-                  ],
+                  itemBuilder:
+                      (context) => [
+                        const PopupMenuItem(
+                          value: 'edit',
+                          child: Row(
+                            children: [
+                              Icon(Icons.edit, size: 20),
+                              SizedBox(width: 8),
+                              Text('Modifier'),
+                            ],
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          value: 'delete',
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.delete,
+                                size: 20,
+                                color: AppColors.error,
+                              ),
+                              SizedBox(width: 8),
+                              Text(
+                                'Supprimer',
+                                style: TextStyle(color: AppColors.error),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                 ),
               ],
             ),
-            
+
             const SizedBox(height: 12),
-            
+
             // Informations de contact
             _buildContactInfo(Icons.phone, contact.phoneNumber),
             if (contact.email != null && contact.email!.isNotEmpty) ...[
@@ -170,18 +182,12 @@ class ContactCard extends StatelessWidget {
   Widget _buildContactInfo(IconData icon, String text) {
     return Row(
       children: [
-        Icon(
-          icon,
-          size: 16,
-          color: AppColors.textSecondary,
-        ),
+        Icon(icon, size: 16, color: AppColors.textSecondary),
         const SizedBox(width: 8),
         Expanded(
           child: Text(
             text,
-            style: AppTypography.body2.copyWith(
-              color: AppColors.textSecondary,
-            ),
+            style: AppTypography.body2.copyWith(color: AppColors.textSecondary),
           ),
         ),
       ],

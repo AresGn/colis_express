@@ -1,8 +1,8 @@
-import 'package:benin_express/domain/models/address.dart';
-import 'package:benin_express/domain/models/contact.dart';
-import 'package:benin_express/domain/models/parcel_history_entry.dart';
-import 'package:benin_express/domain/models/parcel_status.dart';
-import 'package:benin_express/domain/models/transport_type.dart';
+import 'package:agbantche/domain/models/address.dart';
+import 'package:agbantche/domain/models/contact.dart';
+import 'package:agbantche/domain/models/parcel_history_entry.dart';
+import 'package:agbantche/domain/models/parcel_status.dart';
+import 'package:agbantche/domain/models/transport_type.dart';
 
 /// Modé8le de donné9es pour un colis
 class Parcel {

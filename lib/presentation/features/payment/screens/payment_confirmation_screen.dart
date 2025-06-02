@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
-import 'package:benin_express/presentation/core/widgets/custom_button.dart';
-import 'package:benin_express/presentation/core/navigation/route_names.dart';
-import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart'
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/widgets/custom_button.dart';
+import 'package:agbantche/presentation/core/navigation/route_names.dart';
+import 'package:agbantche/presentation/features/auth/widgets/user_type_selector.dart'
     show UserType;
 
 /// Écran de confirmation après un paiement réussi

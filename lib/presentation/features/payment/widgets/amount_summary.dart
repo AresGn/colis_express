@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
 
 class AmountSummary extends StatelessWidget {
   final double amount;
@@ -30,12 +30,19 @@ class AmountSummary extends StatelessWidget {
         children: [
           Text('Résumé de la commande', style: AppTypography.h3),
           const SizedBox(height: 16),
-          
+
           // Détails du montant
           _buildPaymentRow('Sous-total', '${subtotal.toStringAsFixed(0)} FCFA'),
-          _buildPaymentRow('Frais de livraison', '${shipping.toStringAsFixed(0)} FCFA'),
+          _buildPaymentRow(
+            'Frais de livraison',
+            '${shipping.toStringAsFixed(0)} FCFA',
+          ),
           const Divider(height: 24),
-          _buildPaymentRow('Total', '${amount.toStringAsFixed(0)} FCFA', isTotal: true),
+          _buildPaymentRow(
+            'Total',
+            '${amount.toStringAsFixed(0)} FCFA',
+            isTotal: true,
+          ),
         ],
       ),
     );
@@ -52,9 +59,10 @@ class AmountSummary extends StatelessWidget {
             style: TextStyle(
               fontWeight: isTotal ? FontWeight.bold : FontWeight.normal,
               fontSize: isTotal ? 15 : 14,
-              color: isTotal
-                  ? const Color(0xFF1F2937) // Dark for total
-                  : const Color(0xFF6B7280), // Grey for items
+              color:
+                  isTotal
+                      ? const Color(0xFF1F2937) // Dark for total
+                      : const Color(0xFF6B7280), // Grey for items
             ),
           ),
           Text(
@@ -62,9 +70,10 @@ class AmountSummary extends StatelessWidget {
             style: TextStyle(
               fontWeight: isTotal ? FontWeight.bold : FontWeight.normal,
               fontSize: isTotal ? 15 : 14,
-              color: isTotal
-                  ? const Color(0xFF1F2937) // Dark for total
-                  : const Color(0xFF6B7280), // Grey for items
+              color:
+                  isTotal
+                      ? const Color(0xFF1F2937) // Dark for total
+                      : const Color(0xFF6B7280), // Grey for items
             ),
           ),
         ],

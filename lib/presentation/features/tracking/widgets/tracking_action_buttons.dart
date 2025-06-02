@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/widgets/custom_button.dart';
-import 'package:benin_express/presentation/features/tracking/screens/tracking_map_screen.dart';
+import 'package:agbantche/presentation/core/widgets/custom_button.dart';
+import 'package:agbantche/presentation/features/tracking/screens/tracking_map_screen.dart';
 
 /// Widget qui affiche les boutons d'action pour le suivi du colis
 class TrackingActionButtons extends StatelessWidget {
@@ -41,7 +41,8 @@ class TrackingActionButtons extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => TrackingMapScreen(trackingNumber: trackingNumber),
+            builder:
+                (context) => TrackingMapScreen(trackingNumber: trackingNumber),
           ),
         );
       },

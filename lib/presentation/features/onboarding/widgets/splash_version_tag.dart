@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
 
 class SplashVersionTag extends StatelessWidget {
   final String version;

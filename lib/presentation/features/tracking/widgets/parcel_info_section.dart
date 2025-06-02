@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/domain/models/parcel.dart';
-import 'package:benin_express/domain/models/transport_type.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/domain/models/parcel.dart';
+import 'package:agbantche/domain/models/transport_type.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
 
 /// Widget qui affiche les informations détaillées d'un colis
 class ParcelInfoSection extends StatelessWidget {
@@ -18,11 +18,18 @@ class ParcelInfoSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Informations du colis', style: Theme.of(context).textTheme.titleMedium),
+            Text(
+              'Informations du colis',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
             const SizedBox(height: 16),
             _buildInfoRow(context, 'N° de suivi:', parcel.trackingNumber),
             _buildInfoRow(context, 'Description:', parcel.description),
-            _buildInfoRow(context, 'Poids:', parcel.weight != null ? '${parcel.weight} kg' : '-'),
+            _buildInfoRow(
+              context,
+              'Poids:',
+              parcel.weight != null ? '${parcel.weight} kg' : '-',
+            ),
             _buildInfoRow(context, 'Dimensions:', parcel.dimensions ?? '-'),
             _buildInfoRow(context, 'Transport:', _getTransportTypeText()),
           ],
@@ -33,7 +40,6 @@ class ParcelInfoSection extends StatelessWidget {
 
   // Ligne d'information avec titre et valeur
   Widget _buildInfoRow(BuildContext context, String label, String value) {
-
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(
@@ -43,12 +49,16 @@ class ParcelInfoSection extends StatelessWidget {
             width: 120,
             child: Text(
               label,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppColors.textSecondary,
-              ) ?? TextStyle(fontSize: 14, color: AppColors.textSecondary),
+              style:
+                  Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: AppColors.textSecondary,
+                  ) ??
+                  TextStyle(fontSize: 14, color: AppColors.textSecondary),
             ),
           ),
-          Expanded(child: Text(value, style: Theme.of(context).textTheme.bodyMedium)),
+          Expanded(
+            child: Text(value, style: Theme.of(context).textTheme.bodyMedium),
+          ),
         ],
       ),
     );

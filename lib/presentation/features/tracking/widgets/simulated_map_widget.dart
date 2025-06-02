@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
 
 /// Widget pour afficher une carte simulée avec grille et marqueurs
 /// Version temporaire en attendant l'intégration d'OpenStreetMap
@@ -28,10 +28,7 @@ class SimulatedMapWidget extends StatelessWidget {
       child: Stack(
         children: [
           // Grille de fond pour simuler une carte
-          CustomPaint(
-            size: Size.infinite,
-            painter: _MapGridPainter(),
-          ),
+          CustomPaint(size: Size.infinite, painter: _MapGridPainter()),
           // Marqueurs simulés
           _buildSimulatedMarkers(),
           // Route simulée
@@ -50,21 +47,13 @@ class SimulatedMapWidget extends StatelessWidget {
         Positioned(
           left: 50,
           top: 100,
-          child: Icon(
-            Icons.home,
-            color: AppColors.primaryGreen,
-            size: 30,
-          ),
+          child: Icon(Icons.home, color: AppColors.primaryGreen, size: 30),
         ),
         // Marqueur d'arrivée
         Positioned(
           right: 50,
           bottom: 150,
-          child: Icon(
-            Icons.location_on,
-            color: AppColors.primaryRed,
-            size: 30,
-          ),
+          child: Icon(Icons.location_on, color: AppColors.primaryRed, size: 30),
         ),
         // Marqueur du livreur (position animée)
         AnimatedPositioned(
@@ -82,10 +71,7 @@ class SimulatedMapWidget extends StatelessWidget {
   }
 
   Widget _buildSimulatedRoute() {
-    return CustomPaint(
-      size: Size.infinite,
-      painter: _RoutePainter(),
-    );
+    return CustomPaint(size: Size.infinite, painter: _RoutePainter());
   }
 
   Widget _buildPositionInfo() {
@@ -103,10 +89,7 @@ class SimulatedMapWidget extends StatelessWidget {
           children: [
             Text(
               'Position actuelle du livreur:',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
             ),
             Text(
               'Lat: ${currentDeliveryPosition['lat']?.toStringAsFixed(6)}',
@@ -127,9 +110,10 @@ class SimulatedMapWidget extends StatelessWidget {
 class _MapGridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = Colors.grey.withValues(alpha: 0.3)
-      ..strokeWidth = 1;
+    final paint =
+        Paint()
+          ..color = Colors.grey.withValues(alpha: 0.3)
+          ..strokeWidth = 1;
 
     // Dessiner une grille
     for (int i = 0; i < size.width; i += 50) {
@@ -157,10 +141,11 @@ class _MapGridPainter extends CustomPainter {
 class _RoutePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = AppColors.primaryGreen
-      ..strokeWidth = 4
-      ..style = PaintingStyle.stroke;
+    final paint =
+        Paint()
+          ..color = AppColors.primaryGreen
+          ..strokeWidth = 4
+          ..style = PaintingStyle.stroke;
 
     final path = Path();
     path.moveTo(50, 100); // Point de départ

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/widgets/custom_button.dart';
-import 'package:benin_express/presentation/core/widgets/custom_input_field.dart';
-import 'package:benin_express/presentation/core/navigation/route_names.dart';
-import 'package:benin_express/presentation/core/navigation/route_guards.dart'
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/widgets/custom_button.dart';
+import 'package:agbantche/presentation/core/widgets/custom_input_field.dart';
+import 'package:agbantche/presentation/core/navigation/route_names.dart';
+import 'package:agbantche/presentation/core/navigation/route_guards.dart'
     as Guards;
-import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart';
-import 'package:benin_express/presentation/features/auth/widgets/phone_input_field.dart';
-import 'package:benin_express/presentation/features/auth/widgets/forgot_password_link.dart';
-import 'package:benin_express/presentation/features/auth/widgets/register_link.dart';
+import 'package:agbantche/presentation/features/auth/widgets/user_type_selector.dart';
+import 'package:agbantche/presentation/features/auth/widgets/phone_input_field.dart';
+import 'package:agbantche/presentation/features/auth/widgets/forgot_password_link.dart';
+import 'package:agbantche/presentation/features/auth/widgets/register_link.dart';
 
 /// u00c9cran de connexion permettant aux utilisateurs de se connecter é0 leur compte
 class LoginScreen extends StatefulWidget {
@@ -77,9 +77,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           );
 
-          // Navigation vers l'é9cran principal avec le type d'utilisateur
+          // Navigation vers l'intégration post-connexion
           Navigator.of(context).pushReplacementNamed(
-            RouteNames.customerHome,
+            RouteNames.setupWelcome,
             arguments: {'userType': _selectedUserType},
           );
         }

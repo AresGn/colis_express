@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 // import 'package:dotted_border/dotted_border.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-// import 'package:benin_express/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+// import 'package:agbantche/presentation/core/theme/app_typography.dart';
 
 /// Widget pour sélectionner une photo de colis
 class ParcelPhotoPicker extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
 
 class SplashBranding extends StatelessWidget {
   const SplashBranding({super.key});
@@ -10,7 +10,7 @@ class SplashBranding extends StatelessWidget {
       children: [
         // Nom de l'application
         Text(
-          'Bénin Express',
+          'Agbantché',
           style: AppTypography.h1.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.w900,

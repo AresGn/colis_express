@@ -1,6 +1,6 @@
-import 'package:benin_express/domain/models/parcel.dart';
-import 'package:benin_express/domain/models/transport_type.dart';
-import 'package:benin_express/presentation/features/parcels/models/transport_option.dart';
+import 'package:agbantche/domain/models/parcel.dart';
+import 'package:agbantche/domain/models/transport_type.dart';
+import 'package:agbantche/presentation/features/parcels/models/transport_option.dart';
 
 /// Utilitaire pour convertir entre les types d'options de transport
 class TransportMapper {

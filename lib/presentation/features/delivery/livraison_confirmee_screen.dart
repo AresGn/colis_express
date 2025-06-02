@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/features/delivery/widgets/success_animation.dart';
-import 'package:benin_express/presentation/features/delivery/widgets/info_card.dart';
-import 'package:benin_express/presentation/features/delivery/widgets/detail_row.dart';
-import 'package:benin_express/presentation/features/delivery/widgets/action_buttons.dart';
+import 'package:agbantche/presentation/features/delivery/widgets/success_animation.dart';
+import 'package:agbantche/presentation/features/delivery/widgets/info_card.dart';
+import 'package:agbantche/presentation/features/delivery/widgets/detail_row.dart';
+import 'package:agbantche/presentation/features/delivery/widgets/action_buttons.dart';
 
 /// u00c9cran de confirmation de livraison ré9ussie
 class LivraisonConfirmeeScreen extends StatelessWidget {

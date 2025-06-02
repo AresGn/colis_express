@@ -1,10 +1,10 @@
-import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart';
+import 'package:agbantche/presentation/features/auth/widgets/user_type_selector.dart';
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
-import 'package:benin_express/presentation/core/navigation/route_names.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/navigation/route_names.dart';
 
-import 'package:benin_express/presentation/features/parcels/screens/new_parcel_screen.dart';
+import 'package:agbantche/presentation/features/parcels/screens/new_parcel_screen.dart';
 
 /// Écran d'accueil principal de l'application
 class HomeScreen extends StatefulWidget {
@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: const Text('Bénin Express'),
+      title: const Text('Agbantché'),
       centerTitle: true,
       backgroundColor: AppColors.white,
       elevation: 1,
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Text('Bonjour, Jean 👋', style: AppTypography.h2),
           const SizedBox(height: 4),
           Text(
-            'Que souhaitez-vous faire aujourd\'hui?',
+            'Expédier un colis aujourd\'hui',
             style: AppTypography.body2.copyWith(color: AppColors.textSecondary),
           ),
           const SizedBox(height: 24),
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildNewParcelButton() {
     return Container(
       width: double.infinity,
-      height: 100,
+      constraints: const BoxConstraints(minHeight: 100),
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: AppColors.primaryGradient,
@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           borderRadius: BorderRadius.circular(16),
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(12),
             child: Row(
               children: [
                 // Icône et texte
@@ -157,19 +157,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        'Envoyer un colis',
-                        style: AppTypography.h3.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                      Flexible(
+                        child: Text(
+                          'Trouvez un conducteur disponible en quelques clics',
+                          style: AppTypography.h3.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const SizedBox(height: 4),
-                      Text(
-                        'Créer une nouvelle expédition',
-                        style: AppTypography.body2.copyWith(
-                          color: Colors.white.withOpacity(0.9),
+                      const SizedBox(height: 2),
+                      Flexible(
+                        child: Text(
+                          'Créer une nouvelle expédition',
+                          style: AppTypography.body2.copyWith(
+                            color: Colors.white.withOpacity(0.9),
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],

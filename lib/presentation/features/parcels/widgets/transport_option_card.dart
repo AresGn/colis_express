@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
-import 'package:benin_express/presentation/features/parcels/models/transport_option.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/features/parcels/models/transport_option.dart';
 
 /// Carte affichant une option de transport avec ses détails
 class TransportOptionCard extends StatelessWidget {

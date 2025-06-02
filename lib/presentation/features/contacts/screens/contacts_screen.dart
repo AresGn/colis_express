@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
-import 'package:benin_express/presentation/core/widgets/custom_button.dart';
-import 'package:benin_express/domain/models/saved_contact.dart';
-import 'package:benin_express/presentation/features/contacts/widgets/contact_card.dart';
-import 'package:benin_express/presentation/features/contacts/widgets/contact_form.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/widgets/custom_button.dart';
+import 'package:agbantche/domain/models/saved_contact.dart';
+import 'package:agbantche/presentation/features/contacts/widgets/contact_card.dart';
+import 'package:agbantche/presentation/features/contacts/widgets/contact_form.dart';
 
 /// Écran de gestion des contacts
 class ContactsScreen extends StatefulWidget {
@@ -49,20 +49,21 @@ class _ContactsScreenState extends State<ContactsScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => ContactForm(
-        onSave: (contact) {
-          setState(() {
-            _contacts.add(contact);
-          });
-          Navigator.pop(context);
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Contact ajouté avec succès'),
-              backgroundColor: AppColors.success,
-            ),
-          );
-        },
-      ),
+      builder:
+          (context) => ContactForm(
+            onSave: (contact) {
+              setState(() {
+                _contacts.add(contact);
+              });
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Contact ajouté avec succès'),
+                  backgroundColor: AppColors.success,
+                ),
+              );
+            },
+          ),
     );
   }
 
@@ -71,55 +72,62 @@ class _ContactsScreenState extends State<ContactsScreen> {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => ContactForm(
-        contact: contact,
-        onSave: (updatedContact) {
-          setState(() {
-            final index = _contacts.indexWhere((c) => c.id == contact.id);
-            if (index != -1) {
-              _contacts[index] = updatedContact;
-            }
-          });
-          Navigator.pop(context);
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Contact modifié avec succès'),
-              backgroundColor: AppColors.success,
-            ),
-          );
-        },
-      ),
+      builder:
+          (context) => ContactForm(
+            contact: contact,
+            onSave: (updatedContact) {
+              setState(() {
+                final index = _contacts.indexWhere((c) => c.id == contact.id);
+                if (index != -1) {
+                  _contacts[index] = updatedContact;
+                }
+              });
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Contact modifié avec succès'),
+                  backgroundColor: AppColors.success,
+                ),
+              );
+            },
+          ),
     );
   }
 
   void _deleteContact(SavedContact contact) {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Supprimer le contact'),
-        content: Text('Êtes-vous sûr de vouloir supprimer ${contact.name} ?'),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Annuler'),
-          ),
-          TextButton(
-            onPressed: () {
-              setState(() {
-                _contacts.removeWhere((c) => c.id == contact.id);
-              });
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Contact supprimé'),
-                  backgroundColor: AppColors.error,
+      builder:
+          (context) => AlertDialog(
+            title: const Text('Supprimer le contact'),
+            content: Text(
+              'Êtes-vous sûr de vouloir supprimer ${contact.name} ?',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Annuler'),
+              ),
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    _contacts.removeWhere((c) => c.id == contact.id);
+                  });
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Contact supprimé'),
+                      backgroundColor: AppColors.error,
+                    ),
+                  );
+                },
+                child: const Text(
+                  'Supprimer',
+                  style: TextStyle(color: AppColors.error),
                 ),
-              );
-            },
-            child: const Text('Supprimer', style: TextStyle(color: AppColors.error)),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
@@ -139,10 +147,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
         foregroundColor: AppColors.primaryGreen,
         elevation: 0.5,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: _addContact,
-          ),
+          IconButton(icon: const Icon(Icons.add), onPressed: _addContact),
         ],
       ),
       body: _contacts.isEmpty ? _buildEmptyState() : _buildContactsList(),
@@ -161,17 +166,11 @@ class _ContactsScreenState extends State<ContactsScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.contacts,
-              size: 80,
-              color: AppColors.textTertiary,
-            ),
+            Icon(Icons.contacts, size: 80, color: AppColors.textTertiary),
             const SizedBox(height: 16),
             Text(
               'Aucun contact',
-              style: AppTypography.h3.copyWith(
-                color: AppColors.textSecondary,
-              ),
+              style: AppTypography.h3.copyWith(color: AppColors.textSecondary),
             ),
             const SizedBox(height: 8),
             Text(

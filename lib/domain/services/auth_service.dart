@@ -1,4 +1,4 @@
-import 'package:benin_express/domain/models/user.dart';
+import 'package:agbantche/domain/models/user.dart';
 
 /// Service responsable de l'authentification des utilisateurs
 class AuthService {

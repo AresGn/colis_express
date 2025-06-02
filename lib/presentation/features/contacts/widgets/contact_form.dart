@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/theme/app_typography.dart';
-import 'package:benin_express/presentation/core/widgets/custom_button.dart';
-import 'package:benin_express/presentation/core/widgets/custom_input_field.dart';
-import 'package:benin_express/domain/models/saved_contact.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/theme/app_typography.dart';
+import 'package:agbantche/presentation/core/widgets/custom_button.dart';
+import 'package:agbantche/presentation/core/widgets/custom_input_field.dart';
+import 'package:agbantche/domain/models/saved_contact.dart';
 
 /// Formulaire pour ajouter ou modifier un contact
 class ContactForm extends StatefulWidget {
   final SavedContact? contact; // null pour un nouveau contact
   final Function(SavedContact) onSave;
 
-  const ContactForm({
-    super.key,
-    this.contact,
-    required this.onSave,
-  });
+  const ContactForm({super.key, this.contact, required this.onSave});
 
   @override
   State<ContactForm> createState() => _ContactFormState();
@@ -33,9 +29,13 @@ class _ContactFormState extends State<ContactForm> {
   void initState() {
     super.initState();
     _nameController = TextEditingController(text: widget.contact?.name ?? '');
-    _phoneController = TextEditingController(text: widget.contact?.phoneNumber ?? '');
+    _phoneController = TextEditingController(
+      text: widget.contact?.phoneNumber ?? '',
+    );
     _emailController = TextEditingController(text: widget.contact?.email ?? '');
-    _addressController = TextEditingController(text: widget.contact?.address ?? '');
+    _addressController = TextEditingController(
+      text: widget.contact?.address ?? '',
+    );
     _labelController = TextEditingController(text: widget.contact?.label ?? '');
     _isDefault = widget.contact?.isDefault ?? false;
   }
@@ -53,17 +53,25 @@ class _ContactFormState extends State<ContactForm> {
   void _saveContact() {
     if (_formKey.currentState!.validate()) {
       final contact = SavedContact(
-        id: widget.contact?.id ?? DateTime.now().millisecondsSinceEpoch.toString(),
+        id:
+            widget.contact?.id ??
+            DateTime.now().millisecondsSinceEpoch.toString(),
         name: _nameController.text.trim(),
         phoneNumber: _phoneController.text.trim(),
-        email: _emailController.text.trim().isEmpty ? null : _emailController.text.trim(),
+        email:
+            _emailController.text.trim().isEmpty
+                ? null
+                : _emailController.text.trim(),
         address: _addressController.text.trim(),
-        label: _labelController.text.trim().isEmpty ? null : _labelController.text.trim(),
+        label:
+            _labelController.text.trim().isEmpty
+                ? null
+                : _labelController.text.trim(),
         isDefault: _isDefault,
         createdAt: widget.contact?.createdAt ?? DateTime.now(),
         updatedAt: widget.contact != null ? DateTime.now() : null,
       );
-      
+
       widget.onSave(contact);
     }
   }
@@ -90,7 +98,9 @@ class _ContactFormState extends State<ContactForm> {
             children: [
               Expanded(
                 child: Text(
-                  widget.contact == null ? 'Nouveau contact' : 'Modifier le contact',
+                  widget.contact == null
+                      ? 'Nouveau contact'
+                      : 'Modifier le contact',
                   style: AppTypography.h3,
                 ),
               ),
@@ -100,9 +110,9 @@ class _ContactFormState extends State<ContactForm> {
               ),
             ],
           ),
-          
+
           const SizedBox(height: 16),
-          
+
           // Formulaire
           Form(
             key: _formKey,
@@ -120,7 +130,7 @@ class _ContactFormState extends State<ContactForm> {
                   },
                 ),
                 const SizedBox(height: 16),
-                
+
                 // Téléphone
                 CustomInputField(
                   controller: _phoneController,
@@ -138,7 +148,7 @@ class _ContactFormState extends State<ContactForm> {
                   },
                 ),
                 const SizedBox(height: 16),
-                
+
                 // Email (optionnel)
                 CustomInputField(
                   controller: _emailController,
@@ -146,7 +156,9 @@ class _ContactFormState extends State<ContactForm> {
                   keyboardType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value != null && value.trim().isNotEmpty) {
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                      if (!RegExp(
+                        r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                      ).hasMatch(value)) {
                         return 'Email invalide';
                       }
                     }
@@ -154,7 +166,7 @@ class _ContactFormState extends State<ContactForm> {
                   },
                 ),
                 const SizedBox(height: 16),
-                
+
                 // Adresse
                 CustomInputField(
                   controller: _addressController,
@@ -168,7 +180,7 @@ class _ContactFormState extends State<ContactForm> {
                   },
                 ),
                 const SizedBox(height: 16),
-                
+
                 // Label (optionnel)
                 CustomInputField(
                   controller: _labelController,
@@ -176,7 +188,7 @@ class _ContactFormState extends State<ContactForm> {
                   hint: 'Ex: Famille, Travail, Ami...',
                 ),
                 const SizedBox(height: 16),
-                
+
                 // Contact par défaut
                 Row(
                   children: [
@@ -197,9 +209,9 @@ class _ContactFormState extends State<ContactForm> {
                     ),
                   ],
                 ),
-                
+
                 const SizedBox(height: 24),
-                
+
                 // Boutons
                 Row(
                   children: [

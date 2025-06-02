@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/widgets/custom_button.dart';
-import 'package:benin_express/presentation/core/navigation/route_names.dart';
-import 'package:benin_express/presentation/core/navigation/route_guards.dart'
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/widgets/custom_button.dart';
+import 'package:agbantche/presentation/core/navigation/route_names.dart';
+import 'package:agbantche/presentation/core/navigation/route_guards.dart'
     as guards;
-import 'package:benin_express/presentation/features/auth/widgets/user_type_selector.dart'
+import 'package:agbantche/presentation/features/auth/widgets/user_type_selector.dart'
     show UserType;
-import 'package:benin_express/presentation/features/auth/widgets/register_header.dart';
-import 'package:benin_express/presentation/features/auth/widgets/registration_form.dart';
-import 'package:benin_express/presentation/features/auth/widgets/terms_checkbox.dart';
-import 'package:benin_express/presentation/features/auth/widgets/login_link.dart';
+import 'package:agbantche/presentation/features/auth/widgets/register_header.dart';
+import 'package:agbantche/presentation/features/auth/widgets/registration_form.dart';
+import 'package:agbantche/presentation/features/auth/widgets/terms_checkbox.dart';
+import 'package:agbantche/presentation/features/auth/widgets/login_link.dart';
 
 /// u00c9cran d'inscription permettant aux utilisateurs de cré9er un compte
 class RegisterScreen extends StatefulWidget {
@@ -76,9 +76,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         // Marquer l'utilisateur comme authentifié
         guards.RouteGuards.setAuthenticated(true, guards.UserType.customer);
 
-        // Navigation vers l'é9cran principal apré8s inscription
+        // Navigation vers l'intégration post-inscription
         Navigator.of(context).pushReplacementNamed(
-          RouteNames.customerHome,
+          RouteNames.setupWelcome,
           arguments: {'userType': UserType.expediteur},
         );
       }

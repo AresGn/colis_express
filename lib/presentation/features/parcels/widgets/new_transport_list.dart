@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/features/parcels/models/transporter.dart';
-import 'package:benin_express/presentation/features/parcels/widgets/new_transport_card.dart';
+import 'package:agbantche/presentation/features/parcels/models/transporter.dart';
+import 'package:agbantche/presentation/features/parcels/widgets/new_transport_card.dart';
 
 /// Liste des transporteurs avec le nouveau design
 class NewTransportList extends StatelessWidget {

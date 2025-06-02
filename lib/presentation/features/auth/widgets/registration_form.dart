@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/core/theme/app_colors.dart';
-import 'package:benin_express/presentation/core/widgets/custom_input_field.dart';
+import 'package:agbantche/presentation/core/theme/app_colors.dart';
+import 'package:agbantche/presentation/core/widgets/custom_input_field.dart';
 
 /// Formulaire d'inscription avec champs pour nom, té9lé9phone, email et mot de passe
 class RegistrationForm extends StatelessWidget {

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:benin_express/presentation/features/delivery/livraison_confirmee_screen.dart';
+import 'package:agbantche/presentation/features/delivery/livraison_confirmee_screen.dart';
 
 class PaymentDialogs {
   /// Affiche un dialogue de confirmation de paiement
-  static Future<void> showConfirmationDialog(BuildContext context, String paymentMethod) async {
+  static Future<void> showConfirmationDialog(
+    BuildContext context,
+    String paymentMethod,
+  ) async {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
